@@ -3,88 +3,283 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bollywood Radio</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
-    background: #111;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+        url("file_00000000331c82118c697d6c820bd728.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-family: Arial, sans-serif;
 }
 
 .player {
     width: 90%;
     max-width: 430px;
-    background: #211f1f;
+
+    padding: 28px 20px;
+
     color: white;
-    border-radius: 25px;
-    padding: 22px;
-    box-sizing: border-box;
     text-align: center;
+
+    background: rgba(15, 12, 10, 0.72);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.7),
+        inset 0 0 30px rgba(255,180,70,0.08);
+
+    backdrop-filter: blur(5px);
+}
+
+.online {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    margin-bottom: 12px;
+
+    border-radius: 20px;
+
+    background: rgba(30,150,70,0.85);
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+
+    text-shadow: 0 3px 15px black;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.85;
+
+    margin-bottom: 25px;
 }
 
 .tuning {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+
+.equalizer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    gap: 4px;
+
+    height: 35px;
+
+    margin-bottom: 25px;
+}
+
+.equalizer span {
+    width: 4px;
+    height: 15px;
+
+    background: #f2b84b;
+
+    border-radius: 5px;
+
+    animation: music 0.8s infinite alternate;
+}
+
+.equalizer span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.equalizer span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.equalizer span:nth-child(4) {
+    animation-delay: .1s;
+}
+
+.equalizer span:nth-child(5) {
+    animation-delay: .3s;
+}
+
+@keyframes music {
+
+    from {
+        height: 8px;
+    }
+
+    to {
+        height: 32px;
+    }
+
 }
 
 .controls {
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    gap: 20px;
+
+    gap: 18px;
+
 }
 
 button {
-    border: 0;
+
+    border: none;
+
     width: 55px;
     height: 55px;
+
     border-radius: 50%;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #111;
+
     font-size: 22px;
+
     cursor: pointer;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+
+}
+
+button:active {
+
+    transform: scale(0.92);
+
 }
 
 .play {
-    width: 70px;
-    height: 70px;
+
+    width: 72px;
+    height: 72px;
+
     font-size: 28px;
+
+    background: #f2b84b;
+
 }
 
 #youtube-player {
+
     position: absolute;
+
     width: 1px;
     height: 1px;
+
     opacity: 0;
+
     pointer-events: none;
+
 }
+
+.footer {
+
+    margin-top: 25px;
+
+    font-size: 11px;
+
+    opacity: 0.6;
+
+    letter-spacing: 1px;
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="player">
 
-    <div class="tuning">🎵 Tuning in...</div>
+    <div class="online">
+        ● ONLINE
+    </div>
+
+    <div class="logo">
+        BOLLYWOOD RADIO
+    </div>
+
+    <div class="subtitle">
+        Tuning in to Timeless Melodies 🎶
+    </div>
+
+    <div class="tuning">
+        🎵 Tuning in...
+    </div>
+
+    <div class="equalizer">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
     <div id="youtube-player"></div>
 
     <div class="controls">
-        <button onclick="previousSong()">⏮</button>
-        <button class="play" onclick="playPause()">▶</button>
-        <button onclick="nextSong()">⏭</button>
+
+        <button onclick="previousSong()">
+            ⏮
+        </button>
+
+        <button class="play" onclick="playPause()">
+            ▶
+        </button>
+
+        <button onclick="nextSong()">
+            ⏭
+        </button>
+
+    </div>
+
+    <div class="footer">
+        BOLLYWOOD RADIO
     </div>
 
 </div>
+
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 
 const songs = [
+
     "Mj3KyjuKbqI",
     "O5qahfzGtc8",
     "LMpSZWT1O78",
@@ -101,43 +296,69 @@ const songs = [
     "hUxn5TZzTqo",
     "5EZagydXjNU",
     "5MIGQBpVeqs"
+
 ];
 
 let currentSong = 0;
+
 let player;
+
 let isPlaying = false;
+
 
 function onYouTubeIframeAPIReady() {
 
     player = new YT.Player("youtube-player", {
+
         videoId: songs[currentSong],
 
         playerVars: {
+
             controls: 0,
+
             rel: 0,
+
             modestbranding: 1
+
         },
 
         events: {
+
             onStateChange: songStateChanged
+
         }
+
     });
+
 }
+
 
 function playPause() {
 
     if (!player) return;
 
     if (isPlaying) {
+
         player.pauseVideo();
+
         document.querySelector(".play").textContent = "▶";
+
         isPlaying = false;
-    } else {
-        player.playVideo();
-        document.querySelector(".play").textContent = "⏸";
-        isPlaying = true;
+
     }
+
+    else {
+
+        player.playVideo();
+
+        document.querySelector(".play").textContent = "⏸";
+
+        isPlaying = true;
+
+    }
+
 }
+
 
 function nextSong() {
 
@@ -146,14 +367,19 @@ function nextSong() {
     currentSong++;
 
     if (currentSong >= songs.length) {
+
         currentSong = 0;
+
     }
 
     player.loadVideoById(songs[currentSong]);
 
     isPlaying = true;
+
     document.querySelector(".play").textContent = "⏸";
+
 }
+
 
 function previousSong() {
 
@@ -162,24 +388,32 @@ function previousSong() {
     currentSong--;
 
     if (currentSong < 0) {
+
         currentSong = songs.length - 1;
+
     }
 
     player.loadVideoById(songs[currentSong]);
 
     isPlaying = true;
+
     document.querySelector(".play").textContent = "⏸";
+
 }
+
 
 function songStateChanged(event) {
 
-    // गाना खत्म → अगला गाना
     if (event.data === YT.PlayerState.ENDED) {
+
         nextSong();
+
     }
+
 }
 
 </script>
 
 </body>
+
 </html>
