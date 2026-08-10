@@ -12,122 +12,146 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
     min-height: 100vh;
 
     background:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-        url("file_00000000331c82118c697d6c820bd728.png");
+        linear-gradient(
+            rgba(0,0,0,0.28),
+            rgba(0,0,0,0.58)
+        ),
+        url("./file_00000000331c82118c697d6c820bd728.png");
 
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    padding: 20px;
+
     font-family: Arial, sans-serif;
+
+    color: white;
 }
 
 .player {
-    width: 90%;
+    width: 100%;
     max-width: 430px;
 
-    padding: 28px 20px;
+    padding: 30px 20px;
 
-    color: white;
     text-align: center;
 
-    background: rgba(15, 12, 10, 0.72);
+    background: rgba(10, 10, 10, 0.55);
 
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
 
     border-radius: 28px;
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,0.7),
-        inset 0 0 30px rgba(255,180,70,0.08);
+        0 20px 60px rgba(0,0,0,0.65),
+        inset 0 0 35px rgba(255,200,100,0.08);
 
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
 }
 
 .online {
     display: inline-block;
 
-    padding: 6px 12px;
+    padding: 6px 13px;
 
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 
     border-radius: 20px;
 
-    background: rgba(30,150,70,0.85);
+    background: rgba(35,155,75,0.9);
 
-    font-size: 12px;
+    font-size: 11px;
+
     font-weight: bold;
+
     letter-spacing: 1px;
 }
 
 .logo {
     font-size: 30px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
 
-    margin-bottom: 5px;
+    text-shadow:
+        0 3px 15px rgba(0,0,0,0.9);
 
-    text-shadow: 0 3px 15px black;
+    margin-bottom: 8px;
 }
 
 .subtitle {
-    font-size: 14px;
+    font-size: 13px;
+
     opacity: 0.85;
 
     margin-bottom: 25px;
 }
 
 .tuning {
-    font-size: 16px;
-    margin-bottom: 22px;
+    font-size: 15px;
+
+    margin-bottom: 15px;
+
+    opacity: 0.95;
 }
 
 .equalizer {
+    height: 38px;
+
     display: flex;
+
     justify-content: center;
+
     align-items: flex-end;
 
-    gap: 4px;
-
-    height: 35px;
+    gap: 5px;
 
     margin-bottom: 25px;
 }
 
 .equalizer span {
-    width: 4px;
-    height: 15px;
+    width: 5px;
 
-    background: #f2b84b;
+    height: 12px;
 
     border-radius: 5px;
 
-    animation: music 0.8s infinite alternate;
+    background: #f4bd55;
+
+    animation: music 0.75s infinite alternate;
 }
 
 .equalizer span:nth-child(2) {
-    animation-delay: .2s;
+    animation-delay: .15s;
 }
 
 .equalizer span:nth-child(3) {
-    animation-delay: .4s;
+    animation-delay: .3s;
 }
 
 .equalizer span:nth-child(4) {
-    animation-delay: .1s;
+    animation-delay: .45s;
 }
 
 .equalizer span:nth-child(5) {
-    animation-delay: .3s;
+    animation-delay: .2s;
 }
 
 @keyframes music {
@@ -137,13 +161,12 @@ body {
     }
 
     to {
-        height: 32px;
+        height: 35px;
     }
 
 }
 
 .controls {
-
     display: flex;
 
     justify-content: center;
@@ -151,75 +174,70 @@ body {
     align-items: center;
 
     gap: 18px;
-
 }
 
 button {
+    width: 55px;
+
+    height: 55px;
 
     border: none;
 
-    width: 55px;
-    height: 55px;
-
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.92);
 
     color: #111;
 
-    font-size: 22px;
+    font-size: 21px;
 
     cursor: pointer;
 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.45);
 
+    transition: transform 0.15s;
 }
 
 button:active {
-
-    transform: scale(0.92);
-
+    transform: scale(0.9);
 }
 
 .play {
+    width: 74px;
 
-    width: 72px;
-    height: 72px;
+    height: 74px;
 
     font-size: 28px;
 
-    background: #f2b84b;
-
+    background: #f4bd55;
 }
 
 #youtube-player {
-
     position: absolute;
 
     width: 1px;
+
     height: 1px;
 
     opacity: 0;
 
     pointer-events: none;
-
 }
 
 .footer {
+    margin-top: 24px;
 
-    margin-top: 25px;
+    font-size: 10px;
 
-    font-size: 11px;
+    opacity: 0.55;
 
-    opacity: 0.6;
-
-    letter-spacing: 1px;
-
+    letter-spacing: 1.5px;
 }
 
 </style>
-
 </head>
+
 
 <body>
 
@@ -234,11 +252,11 @@ button:active {
     </div>
 
     <div class="subtitle">
-        Tuning in to Timeless Melodies 🎶
+        Your Bollywood songs, one after another 🎶
     </div>
 
     <div class="tuning">
-        🎵 Tuning in...
+        🎵 Ready to play
     </div>
 
     <div class="equalizer">
@@ -279,7 +297,6 @@ button:active {
 <script>
 
 const songs = [
-
     "Mj3KyjuKbqI",
     "O5qahfzGtc8",
     "LMpSZWT1O78",
@@ -296,10 +313,13 @@ const songs = [
     "hUxn5TZzTqo",
     "5EZagydXjNU",
     "5MIGQBpVeqs"
-
 ];
 
-let currentSong = 0;
+
+/* Random song से शुरुआत */
+
+let currentSong =
+    Math.floor(Math.random() * songs.length);
 
 let player;
 
@@ -308,27 +328,22 @@ let isPlaying = false;
 
 function onYouTubeIframeAPIReady() {
 
-    player = new YT.Player("youtube-player", {
+    player = new YT.Player(
+        "youtube-player",
+        {
+            videoId: songs[currentSong],
 
-        videoId: songs[currentSong],
+            playerVars: {
+                controls: 0,
+                rel: 0,
+                modestbranding: 1
+            },
 
-        playerVars: {
-
-            controls: 0,
-
-            rel: 0,
-
-            modestbranding: 1
-
-        },
-
-        events: {
-
-            onStateChange: songStateChanged
-
+            events: {
+                onStateChange: songStateChanged
+            }
         }
-
-    });
+    );
 
 }
 
@@ -345,9 +360,7 @@ function playPause() {
 
         isPlaying = false;
 
-    }
-
-    else {
+    } else {
 
         player.playVideo();
 
@@ -367,12 +380,12 @@ function nextSong() {
     currentSong++;
 
     if (currentSong >= songs.length) {
-
         currentSong = 0;
-
     }
 
-    player.loadVideoById(songs[currentSong]);
+    player.loadVideoById(
+        songs[currentSong]
+    );
 
     isPlaying = true;
 
@@ -388,12 +401,12 @@ function previousSong() {
     currentSong--;
 
     if (currentSong < 0) {
-
         currentSong = songs.length - 1;
-
     }
 
-    player.loadVideoById(songs[currentSong]);
+    player.loadVideoById(
+        songs[currentSong]
+    );
 
     isPlaying = true;
 
@@ -404,7 +417,10 @@ function previousSong() {
 
 function songStateChanged(event) {
 
-    if (event.data === YT.PlayerState.ENDED) {
+    if (
+        event.data ===
+        YT.PlayerState.ENDED
+    ) {
 
         nextSong();
 
@@ -415,5 +431,4 @@ function songStateChanged(event) {
 </script>
 
 </body>
-
-</html>
+    </html>
