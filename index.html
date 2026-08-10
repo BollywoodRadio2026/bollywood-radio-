@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bollywood Radio</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.player {
+    width: 90%;
+    max-width: 430px;
+    background: #211f1f;
+    color: white;
+    border-radius: 25px;
+    padding: 22px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.tuning {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    border: 0;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.play {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+}
+
+#youtube-player {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player">
+
+    <div class="tuning">🎵 Tuning in...</div>
+
+    <div id="youtube-player"></div>
+
+    <div class="controls">
+        <button onclick="previousSong()">⏮</button>
+        <button class="play" onclick="playPause()">▶</button>
+        <button onclick="nextSong()">⏭</button>
+    </div>
+
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+
+const songs = [
+    "Mj3KyjuKbqI",
+    "O5qahfzGtc8",
+    "LMpSZWT1O78",
+    "7Ny77gTsWGk",
+    "6NmqPrUftI8",
+    "8hy7pg8wB-c",
+    "A1wZUXY--4U",
+    "5SGxpmPt9j0",
+    "3_cGT6rXp6w",
+    "XEggdtDp_4c",
+    "Wk-YDaTAwyI",
+    "wtlNGAXKkP4",
+    "ZCLQ36O2HiA",
+    "hUxn5TZzTqo",
+    "5EZagydXjNU",
+    "5MIGQBpVeqs"
+];
+
+let currentSong = 0;
+let player;
+let isPlaying = false;
+
+function onYouTubeIframeAPIReady() {
+
+    player = new YT.Player("youtube-player", {
+        videoId: songs[currentSong],
+
+        playerVars: {
+            controls: 0,
+            rel: 0,
+            modestbranding: 1
+        },
+
+        events: {
+            onStateChange: songStateChanged
+        }
+    });
+}
+
+function playPause() {
+
+    if (!player) return;
+
+    if (isPlaying) {
+        player.pauseVideo();
+        document.querySelector(".play").textContent = "▶";
+        isPlaying = false;
+    } else {
+        player.playVideo();
+        document.querySelector(".play").textContent = "⏸";
+        isPlaying = true;
+    }
+}
+
+function nextSong() {
+
+    if (!player) return;
+
+    currentSong++;
+
+    if (currentSong >= songs.length) {
+        currentSong = 0;
+    }
+
+    player.loadVideoById(songs[currentSong]);
+
+    isPlaying = true;
+    document.querySelector(".play").textContent = "⏸";
+}
+
+function previousSong() {
+
+    if (!player) return;
+
+    currentSong--;
+
+    if (currentSong < 0) {
+        currentSong = songs.length - 1;
+    }
+
+    player.loadVideoById(songs[currentSong]);
+
+    isPlaying = true;
+    document.querySelector(".play").textContent = "⏸";
+}
+
+function songStateChanged(event) {
+
+    // गाना खत्म → अगला गाना
+    if (event.data === YT.PlayerState.ENDED) {
+        nextSong();
+    }
+}
+
+</script>
+
+</body>
+</html>
