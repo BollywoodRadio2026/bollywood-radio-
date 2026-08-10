@@ -7,7 +7,6 @@
 <title>Bollywood Radio</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -17,10 +16,7 @@ body {
     min-height: 100vh;
 
     background:
-        linear-gradient(
-            rgba(0,0,0,0.18),
-            rgba(0,0,0,0.35)
-        ),
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
         url("file_00000000331c82118c697d6c820bd728.png");
 
     background-size: cover;
@@ -32,116 +28,85 @@ body {
     align-items: center;
 
     font-family: Arial, sans-serif;
-
-    padding: 18px 0;
 }
-
-/* MAIN RADIO BOX */
 
 .player {
+    width: 90%;
+    max-width: 430px;
 
-    width: 78%;
-    max-width: 350px;
-
-    padding: 20px 16px;
+    padding: 28px 20px;
 
     color: white;
-
     text-align: center;
 
-    background: rgba(8,8,8,0.58);
+    background: rgba(15, 12, 10, 0.72);
 
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.15);
 
-    border-radius: 24px;
+    border-radius: 28px;
 
     box-shadow:
-        0 12px 40px rgba(0,0,0,0.55),
-        inset 0 0 25px rgba(255,190,80,0.07);
+        0 15px 50px rgba(0,0,0,0.7),
+        inset 0 0 30px rgba(255,180,70,0.08);
 
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
 }
 
-/* ONLINE */
-
 .online {
-
     display: inline-block;
 
     padding: 6px 12px;
-
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 
     border-radius: 20px;
 
-    background: rgba(30,150,70,0.9);
+    background: rgba(30,150,70,0.85);
 
-    font-size: 11px;
-
+    font-size: 12px;
     font-weight: bold;
-
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
-/* LOGO */
-
 .logo {
-
-    font-size: 25px;
-
+    font-size: 30px;
     font-weight: bold;
-
-    letter-spacing: 1.5px;
-
+    letter-spacing: 2px;
     margin-bottom: 5px;
 
     text-shadow: 0 3px 15px black;
 }
 
-/* SUBTITLE */
-
 .subtitle {
-
-    font-size: 12px;
-
+    font-size: 14px;
     opacity: 0.85;
-
-    margin-bottom: 17px;
+    margin-bottom: 25px;
 }
 
-/* SONG STATUS */
+.listeners {
+    font-size: 13px;
+    margin-bottom: 18px;
+    opacity: 0.9;
+}
 
 .tuning {
-
-    font-size: 14px;
-
-    margin-bottom: 16px;
-
-    opacity: 0.95;
+    font-size: 16px;
+    margin-bottom: 22px;
 }
 
-/* EQUALIZER */
-
 .equalizer {
-
     display: flex;
-
     justify-content: center;
-
     align-items: flex-end;
 
     gap: 4px;
 
-    height: 30px;
-
-    margin-bottom: 18px;
+    height: 35px;
+    margin-bottom: 25px;
 }
 
 .equalizer span {
-
     width: 4px;
-
-    height: 12px;
+    height: 15px;
 
     background: #f2b84b;
 
@@ -167,351 +132,282 @@ body {
 }
 
 @keyframes music {
-
     from {
-        height: 7px;
+        height: 8px;
     }
 
     to {
-        height: 28px;
+        height: 32px;
     }
-
 }
 
-/* BUTTONS */
-
 .controls {
-
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
-    gap: 14px;
+    gap: 18px;
 }
 
 button {
-
     border: none;
 
-    width: 50px;
-
-    height: 50px;
+    width: 55px;
+    height: 55px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.9);
 
     color: #111;
 
-    font-size: 19px;
+    font-size: 22px;
 
     cursor: pointer;
 
-    box-shadow:
-        0 5px 18px rgba(0,0,0,0.35);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
 
 button:active {
-
     transform: scale(0.92);
 }
 
 .play {
+    width: 72px;
+    height: 72px;
 
-    width: 65px;
-
-    height: 65px;
-
-    font-size: 25px;
+    font-size: 28px;
 
     background: #f2b84b;
 }
 
-/* YOUTUBE PLAYER HIDDEN */
-
 #youtube-player {
-
     position: absolute;
 
     width: 1px;
-
     height: 1px;
 
     opacity: 0;
-
     pointer-events: none;
 }
 
-/* FOOTER */
-
 .footer {
+    margin-top: 25px;
 
-    margin-top: 17px;
-
-    font-size: 9px;
+    font-size: 11px;
 
     opacity: 0.6;
 
     letter-spacing: 1px;
 }
-
 </style>
-
 </head>
 
 <body>
 
-
 <div class="player">
 
-
-    <!-- ONLINE LISTENER COUNT -->
-
     <div class="online">
-
-        ● <span id="listenerCount">
-            2,000 LISTENERS
-        </span>
-
+        ● ONLINE
     </div>
-
-
-    <!-- RADIO NAME -->
 
     <div class="logo">
-
         BOLLYWOOD RADIO
-
     </div>
-
 
     <div class="subtitle">
-
-        Your Bollywood songs, one after another 🎶
-
+        Timeless Bollywood Melodies 🎶
     </div>
 
-
-    <!-- SONG STATUS -->
-
-    <div class="tuning" id="status">
-
-        🎵 Ready to play
-
+    <div class="listeners">
+        👥 <span id="listeners">2025</span> people are listening
     </div>
 
-
-    <!-- EQUALIZER -->
+    <div class="tuning">
+        🎵 Bollywood Radio
+    </div>
 
     <div class="equalizer">
-
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-
     </div>
-
-
-    <!-- HIDDEN YOUTUBE -->
 
     <div id="youtube-player"></div>
 
-
-    <!-- CONTROLS -->
-
     <div class="controls">
 
-        <button onclick="previousSong()">
+        <button onclick="previousSong()">⏮</button>
 
-            ⏮
+        <button class="play" onclick="playPause()">▶</button>
 
-        </button>
-
-
-        <button
-            class="play"
-            onclick="playPause()"
-        >
-
-            ▶
-
-        </button>
-
-
-        <button onclick="nextSong()">
-
-            ⏭
-
-        </button>
+        <button onclick="nextSong()">⏭</button>
 
     </div>
-
 
     <div class="footer">
-
-        BOLLYWOOD RADIO
-
+        BOLLYWOOD RADIO • MUSIC FOR EVERY MOOD
     </div>
-
 
 </div>
 
-
-
-<!-- YOUTUBE API -->
-
 <script src="https://www.youtube.com/iframe_api"></script>
 
-
 <script>
-
-
-/* =========================================
-   YOUTUBE SONGS
-   YAHAN BAAD MEIN AUR GANE ADD KAR SAKTE HO
-   ========================================= */
 
 const songs = [
 
     "Mj3KyjuKbqI",
-
     "O5qahfzGtc8",
-
     "LMpSZWT1O78",
-
     "7Ny77gTsWGk",
-
     "6NmqPrUftI8",
-
     "8hy7pg8wB-c",
-
     "A1wZUXY--4U",
-
     "5SGxpmPt9j0",
-
     "3_cGT6rXp6w",
-
     "XEggdtDp_4c",
-
     "Wk-YDaTAwyI",
-
     "wtlNGAXKkP4",
-
     "ZCLQ36O2HiA",
-
     "hUxn5TZzTqo",
-
     "5EZagydXjNU",
+    "5MIGQBpVeqs",
 
-    "5MIGQBpVeqs"
+    "sBFKHnNp-8c",
+    "_YjSmLlmqLM",
+    "SBfPs-PMGTA",
+    "6Z3DO-OFIjQ",
+    "fTauOK8J-U8",
+    "AMuRRXCuy-4",
+    "7dO_MS9tZ5E",
+    "-Px0efU00uQ",
+    "0QlQo5erDJE",
+    "BOcwZB2W52c",
+    "UNjhqT_hlbg",
+    "vzlXfZlH5dk",
+    "N3QzaUwml5w",
+    "jBpRItrod-Q",
+    "ieu6xnwJxdA",
+    "OsBqRHx2JAA",
+    "MB6jaF_iAnc",
+    "REo4bJUjG-I",
+    "9b0iydtDZLU",
+    "4Tpm7D4-6DU",
+    "RlSRxyxFwXI",
+    "fyZ-sOHj-Vg",
+    "eVnG_Rqfgg4",
+    "HyKuXycQXkg",
+    "Rcu2AAjdTjE",
+    "plB0ytzIlqI",
+    "V6uh3S4XoD0",
+    "6C34aCdjJtM",
+    "fT4vP4PnLxg",
+    "rY_0SOlmrdY",
+    "B8MSjHTo154",
+    "P87IAiJmo4A",
+    "P_KMLTRyRQM",
+    "P_s5hczpHig",
+    "fBSYNez5d8o",
+    "wZ7XNXwwmYg",
+    "exAAEljV-68",
+    "vNWNydwBEks",
+    "POkRQw1VbcU",
+    "0g32tXsYSCE",
+    "ByAbV-MKDgs",
+    "yIzCBU0_LyY",
+    "mlOTDGzSuIA",
+    "WWGibhzNyR8",
+    "vbVfCv8r7vc",
+    "Q3R9rBl0Fow",
+    "hEatV9WPK-o",
+    "tGg0W27GTWY",
+    "DaKfOeQuF18",
+    "NPeStSJEFT4",
+    "_rRHFeqGjvk",
+    "5y_TCKNzAMI",
+    "6qBdQzPnw4E",
+    "B2aHXbnu9dI",
+    "FclVh6PxkF8",
+    "nP6WNnENpJI",
+    "bVdqybfTKGA",
+    "aPkJWkETcoo",
+    "n8ZaPG1QW-A",
+    "07KoprnKr_Y",
+    "gpu9e89DBx8",
+    "PZYHgQye74c",
+    "5s68NXiaWgk",
+    "0vXTVXM6HEE",
+    "n_oP9Onj0r0",
+    "w2iozAbNXAo",
+    "jKDmNaHtHJM",
+    "xM9opJAGh38",
+    "W7H62yTSZ3U",
+    "pfRaIw31Vnk",
+    "JgQWh5kxAEI",
+    "yQxD7GxnE40",
+    "BqGKonVrn1M",
+    "mocKoIhNJxk",
+    "rrzSZ0NMID4",
+    "F6swWL3BexY",
+    "P7P2zqzEYRY",
+    "dXADmFGUVdM"
 
 ];
 
+/* Har baar random song se shuru */
 
+let currentSong = Math.floor(Math.random() * songs.length);
 
-/* =========================================
-   RANDOM START
-   ========================================= */
-
-let currentSong =
-    Math.floor(Math.random() * songs.length);
-
-
-let player = null;
-
+let player;
 let isPlaying = false;
 
 
-
-/* =========================================
-   YOUTUBE PLAYER READY
-   ========================================= */
+/* YouTube player */
 
 function onYouTubeIframeAPIReady() {
 
-    player = new YT.Player(
-        "youtube-player",
-        {
+    player = new YT.Player("youtube-player", {
 
-            videoId: songs[currentSong],
+        videoId: songs[currentSong],
 
-            playerVars: {
+        playerVars: {
+            controls: 0,
+            rel: 0,
+            modestbranding: 1
+        },
 
-                controls: 0,
-
-                rel: 0,
-
-                modestbranding: 1
-
-            },
-
-            events: {
-
-                onReady: function() {
-
-                    document.getElementById(
-                        "status"
-                    ).textContent =
-                        "🎵 Ready to play";
-
-                },
-
-                onStateChange:
-                    songStateChanged
-
-            }
-
+        events: {
+            onStateChange: songStateChanged
         }
-    );
+
+    });
 
 }
 
 
-
-/* =========================================
-   PLAY / PAUSE
-   ========================================= */
+/* Play / Pause */
 
 function playPause() {
 
     if (!player) return;
 
-
     if (isPlaying) {
 
         player.pauseVideo();
 
-        document.querySelector(
-            ".play"
-        ).textContent = "▶";
-
-
-        document.getElementById(
-            "status"
-        ).textContent = "⏸ Paused";
-
+        document.querySelector(".play").textContent = "▶";
 
         isPlaying = false;
 
-    }
-
-    else {
+    } else {
 
         player.playVideo();
 
-        document.querySelector(
-            ".play"
-        ).textContent = "⏸";
-
-
-        document.getElementById(
-            "status"
-        ).textContent = "🎵 Now playing";
-
+        document.querySelector(".play").textContent = "⏸";
 
         isPlaying = true;
 
@@ -520,203 +416,85 @@ function playPause() {
 }
 
 
-
-/* =========================================
-   NEXT SONG
-   ========================================= */
+/* Next */
 
 function nextSong() {
 
     if (!player) return;
 
-
     currentSong++;
 
-    if (
-        currentSong >= songs.length
-    ) {
-
+    if (currentSong >= songs.length) {
         currentSong = 0;
-
     }
 
-
-    player.loadVideoById(
-        songs[currentSong]
-    );
-
+    player.loadVideoById(songs[currentSong]);
 
     isPlaying = true;
 
-
-    document.querySelector(
-        ".play"
-    ).textContent = "⏸";
-
-
-    document.getElementById(
-        "status"
-    ).textContent = "🎵 Now playing";
+    document.querySelector(".play").textContent = "⏸";
 
 }
 
 
-
-/* =========================================
-   PREVIOUS SONG
-   ========================================= */
+/* Previous */
 
 function previousSong() {
 
     if (!player) return;
 
-
     currentSong--;
 
-
     if (currentSong < 0) {
-
-        currentSong =
-            songs.length - 1;
-
+        currentSong = songs.length - 1;
     }
 
-
-    player.loadVideoById(
-        songs[currentSong]
-    );
-
+    player.loadVideoById(songs[currentSong]);
 
     isPlaying = true;
 
-
-    document.querySelector(
-        ".play"
-    ).textContent = "⏸";
-
-
-    document.getElementById(
-        "status"
-    ).textContent = "🎵 Now playing";
+    document.querySelector(".play").textContent = "⏸";
 
 }
 
 
-
-/* =========================================
-   SONG FINISHED
-   RANDOM NEXT SONG
-   ========================================= */
+/* Song khatam → next */
 
 function songStateChanged(event) {
 
-    if (
-        event.data ===
-        YT.PlayerState.ENDED
-    ) {
-
-        let newSong;
-
-
-        do {
-
-            newSong =
-                Math.floor(
-                    Math.random() *
-                    songs.length
-                );
-
-        }
-
-        while (
-            songs.length > 1 &&
-            newSong === currentSong
-        );
-
-
-        currentSong = newSong;
-
-
-        player.loadVideoById(
-            songs[currentSong]
-        );
-
-
-        isPlaying = true;
-
-
-        document.querySelector(
-            ".play"
-        ).textContent = "⏸";
-
-
-        document.getElementById(
-            "status"
-        ).textContent =
-            "🎵 Now playing";
-
+    if (event.data === YT.PlayerState.ENDED) {
+        nextSong();
     }
 
 }
 
 
+/* Listener number ko aas-paas change karna */
 
-/* =========================================
-   LISTENER DISPLAY
-   ABHI DEMO NUMBER HAI
-   ========================================= */
-
-let listeners =
-    Math.floor(
-        Math.random() * 300
-    ) + 1800;
-
+let listeners = 2025;
 
 function updateListeners() {
 
-    let change =
-        Math.floor(
-            Math.random() * 11
-        ) - 5;
-
+    const change = Math.floor(Math.random() * 11) - 5;
 
     listeners += change;
 
-
-    if (listeners < 1500) {
-
-        listeners = 1500;
-
+    if (listeners < 1990) {
+        listeners = 1990;
     }
 
-
-    if (listeners > 2500) {
-
-        listeners = 2500;
-
+    if (listeners > 2060) {
+        listeners = 2060;
     }
 
-
-    document.getElementById(
-        "listenerCount"
-    ).textContent =
-        listeners.toLocaleString() +
-        " LISTENERS";
+    document.getElementById("listeners").textContent =
+        listeners.toLocaleString();
 
 }
 
-
-updateListeners();
-
-
-setInterval(
-    updateListeners,
-    7000
-);
-
+setInterval(updateListeners, 4000);
 
 </script>
 
 </body>
-
-</html>
+    </html>
