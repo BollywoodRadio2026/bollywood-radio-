@@ -10,7 +10,8 @@ margin:0;
 min-height:100vh;
 overflow:hidden;
 font-family:Arial,sans-serif;
-background:radial-gradient(circle at 50% 20%,#7b245f,#2b102f 55%,#090611);
+background:
+radial-gradient(circle at 50% 20%,#ff6bb5 0%,#8b285f 35%,#2a102f 70%,#090611 100%);
 color:white;
 display:flex;
 justify-content:center;
@@ -20,11 +21,11 @@ text-align:center;
 
 .bg-heart{
 position:fixed;
-font-size:22px;
-bottom:-40px;
+bottom:-50px;
 animation:float 7s linear forwards;
 opacity:0;
 z-index:1;
+pointer-events:none;
 }
 
 @keyframes float{
@@ -40,9 +41,9 @@ max-height:90vh;
 overflow:auto;
 padding:28px 21px;
 border-radius:32px;
-background:rgba(255,255,255,.11);
-border:1px solid rgba(255,255,255,.22);
-backdrop-filter:blur(13px);
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.25);
+backdrop-filter:blur(14px);
 box-shadow:0 25px 70px rgba(0,0,0,.65);
 position:relative;
 z-index:5;
@@ -63,29 +64,30 @@ animation:cake 1.5s infinite;
 h1{
 font-size:31px;
 margin:10px 0 5px;
-color:#ffd4ed;
+color:#ffd9ed;
 text-shadow:0 0 25px #ff43ae;
 }
 
 .baby{
-font-size:24px;
+font-size:25px;
 font-weight:bold;
-color:#ff9ed5;
+color:#ffb0dc;
 margin-bottom:20px;
 }
 
 .line{
 font-size:17px;
 line-height:1.75;
-margin:12px 0;
+margin:13px 0;
 opacity:0;
 transform:translateY(15px);
 animation:show 1s forwards;
 }
 
-.line:nth-child(2){animation-delay:.5s}
-.line:nth-child(3){animation-delay:1.3s}
-.line:nth-child(4){animation-delay:2.1s}
+.line:nth-of-type(1){animation-delay:.4s}
+.line:nth-of-type(2){animation-delay:1.2s}
+.line:nth-of-type(3){animation-delay:2s}
+.line:nth-of-type(4){animation-delay:2.8s}
 
 @keyframes show{
 to{opacity:1;transform:translateY(0)}
@@ -95,9 +97,9 @@ to{opacity:1;transform:translateY(0)}
 font-size:21px;
 font-weight:bold;
 line-height:1.8;
-color:#ffd1eb;
-margin-top:15px;
-text-shadow:0 0 15px rgba(255,70,170,.5);
+color:#ffd5ec;
+margin-top:18px;
+text-shadow:0 0 15px rgba(255,70,170,.6);
 }
 
 .gift{
@@ -156,6 +158,22 @@ animation:spark 1.5s forwards;
 0%{transform:scale(.2);opacity:1}
 100%{transform:scale(2) translateY(-70px);opacity:0}
 }
+
+.confetti{
+position:fixed;
+top:-20px;
+font-size:20px;
+z-index:20;
+animation:fall 3s linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(720deg);
+opacity:0;
+}
+}
 </style></head><body><div class="card"><div class="cake">🎂</div><h1>Happy Birthday</h1><div class="baby">Kallo Baby ❤️</div><div class="line">
 Aaj ka din mere liye sirf tumhara birthday nahi hai… ❤️
 </div><div class="line">
@@ -192,13 +210,16 @@ const heartList=["❤️","💕","💖","💗","💓","🥰","✨"];
 function createHeart(){
 
 const h=document.createElement("div");
+
 h.className="bg-heart";
 
 h.innerHTML=
 heartList[Math.floor(Math.random()*heartList.length)];
 
 h.style.left=Math.random()*100+"vw";
+
 h.style.fontSize=(15+Math.random()*28)+"px";
+
 h.style.animationDuration=(4+Math.random()*5)+"s";
 
 document.body.appendChild(h);
@@ -211,26 +232,52 @@ setInterval(createHeart,350);
 function sparkle(){
 
 const s=document.createElement("div");
+
 s.className="sparkle";
+
 s.innerHTML="✨";
 
-s.style.left=(30+Math.random()*40)+"vw";
-s.style.top=(25+Math.random()*50)+"vh";
+s.style.left=(20+Math.random()*60)+"vw";
+
+s.style.top=(20+Math.random()*60)+"vh";
 
 document.body.appendChild(s);
 
 setTimeout(()=>s.remove(),1600);
 }
 
+function confetti(){
+
+const c=document.createElement("div");
+
+c.className="confetti";
+
+c.innerHTML=["🎉","💖","✨","💕","🎀","❤️"]
+[Math.floor(Math.random()*6)];
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.animationDuration=(2+Math.random()*2)+"s";
+
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),4500);
+}
+
 function openSurprise(){
 
 document.getElementById("surprise").style.display="block";
 
-for(let i=0;i<45;i++){
+for(let i=0;i<60;i++){
+
 setTimeout(()=>{
+
 createHeart();
 sparkle();
+confetti();
+
 },i*55);
+
 }
 
 }
