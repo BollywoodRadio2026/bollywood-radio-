@@ -7,6 +7,7 @@
 <title>Bollywood Radio</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -16,7 +17,10 @@ body {
     min-height: 100vh;
 
     background:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+        linear-gradient(
+            rgba(0,0,0,0.30),
+            rgba(0,0,0,0.50)
+        ),
         url("file_00000000331c82118c697d6c820bd728.png");
 
     background-size: cover;
@@ -28,85 +32,125 @@ body {
     align-items: center;
 
     font-family: Arial, sans-serif;
-}
-
-.player {
-    width: 90%;
-    max-width: 430px;
-
-    padding: 28px 20px;
 
     color: white;
+}
+
+/* MAIN RADIO CARD */
+
+.player {
+    width: 92%;
+    max-width: 430px;
+
+    padding: 25px 20px;
+
     text-align: center;
 
-    background: rgba(15, 12, 10, 0.72);
+    background: rgba(18, 14, 12, 0.65);
 
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.18);
 
     border-radius: 28px;
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,0.7),
-        inset 0 0 30px rgba(255,180,70,0.08);
+        0 15px 50px rgba(0,0,0,0.65),
+        inset 0 0 35px rgba(255,190,80,0.08);
 
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
 }
+
+/* ONLINE */
 
 .online {
     display: inline-block;
 
-    padding: 6px 12px;
+    padding: 6px 13px;
+
     margin-bottom: 12px;
 
     border-radius: 20px;
 
-    background: rgba(30,150,70,0.85);
+    background: rgba(25,145,65,0.88);
 
     font-size: 12px;
+
     font-weight: bold;
+
     letter-spacing: 1px;
 }
 
+/* LOGO */
+
 .logo {
-    font-size: 30px;
+    font-size: 29px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
+
     margin-bottom: 5px;
 
     text-shadow: 0 3px 15px black;
 }
 
+/* SUBTITLE */
+
 .subtitle {
-    font-size: 14px;
+    font-size: 13px;
+
     opacity: 0.85;
-    margin-bottom: 25px;
+
+    margin-bottom: 23px;
 }
 
+/* LISTENERS */
+
 .listeners {
-    font-size: 13px;
+    font-size: 14px;
+
     margin-bottom: 18px;
-    opacity: 0.9;
+
+    opacity: 0.95;
 }
+
+#listenerCount {
+    font-weight: bold;
+
+    color: #f2c15a;
+
+    font-size: 16px;
+}
+
+/* TUNING */
 
 .tuning {
     font-size: 16px;
-    margin-bottom: 22px;
+
+    margin-bottom: 18px;
+
+    opacity: 0.95;
 }
+
+/* EQUALIZER */
 
 .equalizer {
     display: flex;
+
     justify-content: center;
+
     align-items: flex-end;
 
     gap: 4px;
 
     height: 35px;
+
     margin-bottom: 25px;
 }
 
 .equalizer span {
     width: 4px;
-    height: 15px;
+
+    height: 10px;
 
     background: #f2b84b;
 
@@ -116,35 +160,40 @@ body {
 }
 
 .equalizer span:nth-child(2) {
-    animation-delay: .2s;
+    animation-delay: .15s;
 }
 
 .equalizer span:nth-child(3) {
-    animation-delay: .4s;
-}
-
-.equalizer span:nth-child(4) {
-    animation-delay: .1s;
-}
-
-.equalizer span:nth-child(5) {
     animation-delay: .3s;
 }
 
+.equalizer span:nth-child(4) {
+    animation-delay: .45s;
+}
+
+.equalizer span:nth-child(5) {
+    animation-delay: .2s;
+}
+
 @keyframes music {
+
     from {
-        height: 8px;
+        height: 7px;
     }
 
     to {
         height: 32px;
     }
+
 }
+
+/* CONTROLS */
 
 .controls {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     gap: 18px;
@@ -154,27 +203,32 @@ button {
     border: none;
 
     width: 55px;
+
     height: 55px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.92);
 
     color: #111;
 
-    font-size: 22px;
+    font-size: 21px;
 
     cursor: pointer;
 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.45);
+
+    transition: 0.15s;
 }
 
 button:active {
-    transform: scale(0.92);
+    transform: scale(0.90);
 }
 
 .play {
     width: 72px;
+
     height: 72px;
 
     font-size: 28px;
@@ -182,29 +236,54 @@ button:active {
     background: #f2b84b;
 }
 
+/* YOUTUBE PLAYER */
+
 #youtube-player {
+
     position: absolute;
 
     width: 1px;
+
     height: 1px;
 
     opacity: 0;
+
     pointer-events: none;
 }
 
+/* FOOTER */
+
 .footer {
-    margin-top: 25px;
 
-    font-size: 11px;
+    margin-top: 24px;
 
-    opacity: 0.6;
+    font-size: 10px;
 
-    letter-spacing: 1px;
+    opacity: 0.55;
+
+    letter-spacing: 1.5px;
 }
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .player {
+        padding: 23px 17px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
+
 
 <div class="player">
 
@@ -212,289 +291,378 @@ button:active {
         ● ONLINE
     </div>
 
+
     <div class="logo">
         BOLLYWOOD RADIO
     </div>
 
+
     <div class="subtitle">
-        Timeless Bollywood Melodies 🎶
+        Tuning in to Timeless Melodies 🎶
     </div>
+
 
     <div class="listeners">
-        👥 <span id="listeners">2025</span> people are listening
+        🎧 <span id="listenerCount">2,024</span> people are listening
     </div>
 
-    <div class="tuning">
-        🎵 Bollywood Radio
+
+    <div class="tuning" id="tuningText">
+        🎵 Tuning in...
     </div>
+
 
     <div class="equalizer">
+
         <span></span>
+
         <span></span>
+
         <span></span>
+
         <span></span>
+
         <span></span>
+
     </div>
+
 
     <div id="youtube-player"></div>
 
+
     <div class="controls">
 
-        <button onclick="previousSong()">⏮</button>
+        <button onclick="previousSong()">
+            ⏮
+        </button>
 
-        <button class="play" onclick="playPause()">▶</button>
 
-        <button onclick="nextSong()">⏭</button>
+        <button
+            class="play"
+            onclick="playPause()"
+            id="playButton">
+            ▶
+        </button>
+
+
+        <button onclick="nextSong()">
+            ⏭
+        </button>
 
     </div>
 
+
     <div class="footer">
-        BOLLYWOOD RADIO • MUSIC FOR EVERY MOOD
+        BOLLYWOOD RADIO • TIMELESS MELODIES
     </div>
 
 </div>
 
+
 <script src="https://www.youtube.com/iframe_api"></script>
+
 
 <script>
 
+/* =========================================
+   YOUR 10 SONGS
+   ========================================= */
+
 const songs = [
 
-    "Mj3KyjuKbqI",
-    "O5qahfzGtc8",
-    "LMpSZWT1O78",
-    "7Ny77gTsWGk",
-    "6NmqPrUftI8",
-    "8hy7pg8wB-c",
-    "A1wZUXY--4U",
-    "5SGxpmPt9j0",
-    "3_cGT6rXp6w",
-    "XEggdtDp_4c",
-    "Wk-YDaTAwyI",
-    "wtlNGAXKkP4",
-    "ZCLQ36O2HiA",
-    "hUxn5TZzTqo",
-    "5EZagydXjNU",
-    "5MIGQBpVeqs",
+    "YnYHfIRjhGE",
 
-    "sBFKHnNp-8c",
-    "_YjSmLlmqLM",
-    "SBfPs-PMGTA",
-    "6Z3DO-OFIjQ",
-    "fTauOK8J-U8",
-    "AMuRRXCuy-4",
-    "7dO_MS9tZ5E",
-    "-Px0efU00uQ",
-    "0QlQo5erDJE",
-    "BOcwZB2W52c",
-    "UNjhqT_hlbg",
-    "vzlXfZlH5dk",
-    "N3QzaUwml5w",
-    "jBpRItrod-Q",
-    "ieu6xnwJxdA",
-    "OsBqRHx2JAA",
-    "MB6jaF_iAnc",
-    "REo4bJUjG-I",
-    "9b0iydtDZLU",
-    "4Tpm7D4-6DU",
-    "RlSRxyxFwXI",
-    "fyZ-sOHj-Vg",
-    "eVnG_Rqfgg4",
-    "HyKuXycQXkg",
-    "Rcu2AAjdTjE",
-    "plB0ytzIlqI",
-    "V6uh3S4XoD0",
-    "6C34aCdjJtM",
-    "fT4vP4PnLxg",
-    "rY_0SOlmrdY",
-    "B8MSjHTo154",
-    "P87IAiJmo4A",
-    "P_KMLTRyRQM",
-    "P_s5hczpHig",
-    "fBSYNez5d8o",
-    "wZ7XNXwwmYg",
-    "exAAEljV-68",
-    "vNWNydwBEks",
-    "POkRQw1VbcU",
-    "0g32tXsYSCE",
-    "ByAbV-MKDgs",
-    "yIzCBU0_LyY",
-    "mlOTDGzSuIA",
-    "WWGibhzNyR8",
-    "vbVfCv8r7vc",
-    "Q3R9rBl0Fow",
-    "hEatV9WPK-o",
-    "tGg0W27GTWY",
-    "DaKfOeQuF18",
-    "NPeStSJEFT4",
-    "_rRHFeqGjvk",
-    "5y_TCKNzAMI",
-    "6qBdQzPnw4E",
-    "B2aHXbnu9dI",
-    "FclVh6PxkF8",
-    "nP6WNnENpJI",
-    "bVdqybfTKGA",
-    "aPkJWkETcoo",
-    "n8ZaPG1QW-A",
-    "07KoprnKr_Y",
-    "gpu9e89DBx8",
-    "PZYHgQye74c",
-    "5s68NXiaWgk",
-    "0vXTVXM6HEE",
-    "n_oP9Onj0r0",
-    "w2iozAbNXAo",
-    "jKDmNaHtHJM",
-    "xM9opJAGh38",
-    "W7H62yTSZ3U",
-    "pfRaIw31Vnk",
-    "JgQWh5kxAEI",
-    "yQxD7GxnE40",
-    "BqGKonVrn1M",
-    "mocKoIhNJxk",
-    "rrzSZ0NMID4",
-    "F6swWL3BexY",
-    "P7P2zqzEYRY",
-    "dXADmFGUVdM"
+    "1VdMEriTiDk",
+
+    "tADaTIFoJVM",
+
+    "HUZhV8EFrNU",
+
+    "o-iUnredK5c",
+
+    "e5ff83TbWR4",
+
+    "uA_qKTU3cy8",
+
+    "PWyXe6fzsmM",
+
+    "RpRtGHcRX54",
+
+    "lYzA4N2jZAA"
 
 ];
 
-/* Har baar random song se shuru */
 
-let currentSong = Math.floor(Math.random() * songs.length);
+/* =========================================
+   RANDOM START
+   ========================================= */
+
+let currentSong =
+    Math.floor(Math.random() * songs.length);
 
 let player;
+
 let isPlaying = false;
 
 
-/* YouTube player */
+/* =========================================
+   YOUTUBE PLAYER
+   ========================================= */
 
 function onYouTubeIframeAPIReady() {
 
-    player = new YT.Player("youtube-player", {
+    player = new YT.Player(
+        "youtube-player",
+        {
 
-        videoId: songs[currentSong],
+            videoId: songs[currentSong],
 
-        playerVars: {
-            controls: 0,
-            rel: 0,
-            modestbranding: 1
-        },
+            playerVars: {
 
-        events: {
-            onStateChange: songStateChanged
+                controls: 0,
+
+                rel: 0,
+
+                modestbranding: 1,
+
+                playsinline: 1
+
+            },
+
+            events: {
+
+                onReady: playerReady,
+
+                onStateChange: songStateChanged
+
+            }
+
         }
-
-    });
+    );
 
 }
 
 
-/* Play / Pause */
+/* =========================================
+   PLAYER READY
+   ========================================= */
+
+function playerReady() {
+
+    document.getElementById(
+        "tuningText"
+    ).textContent = "🎵 Ready to play...";
+
+}
+
+
+/* =========================================
+   PLAY / PAUSE
+   ========================================= */
 
 function playPause() {
 
     if (!player) return;
 
+
     if (isPlaying) {
 
         player.pauseVideo();
 
-        document.querySelector(".play").textContent = "▶";
+        document.getElementById(
+            "playButton"
+        ).textContent = "▶";
 
         isPlaying = false;
 
-    } else {
+    }
+
+    else {
 
         player.playVideo();
 
-        document.querySelector(".play").textContent = "⏸";
+        document.getElementById(
+            "playButton"
+        ).textContent = "⏸";
 
         isPlaying = true;
+
+        document.getElementById(
+            "tuningText"
+        ).textContent = "🎵 Now Playing...";
 
     }
 
 }
 
 
-/* Next */
+/* =========================================
+   NEXT SONG
+   ========================================= */
 
 function nextSong() {
 
     if (!player) return;
 
+
     currentSong++;
 
     if (currentSong >= songs.length) {
+
         currentSong = 0;
+
     }
 
-    player.loadVideoById(songs[currentSong]);
+
+    player.loadVideoById(
+        songs[currentSong]
+    );
+
 
     isPlaying = true;
 
-    document.querySelector(".play").textContent = "⏸";
+
+    document.getElementById(
+        "playButton"
+    ).textContent = "⏸";
+
+
+    document.getElementById(
+        "tuningText"
+    ).textContent = "🎵 Now Playing...";
 
 }
 
 
-/* Previous */
+/* =========================================
+   PREVIOUS SONG
+   ========================================= */
 
 function previousSong() {
 
     if (!player) return;
 
+
     currentSong--;
 
     if (currentSong < 0) {
+
         currentSong = songs.length - 1;
+
     }
 
-    player.loadVideoById(songs[currentSong]);
+
+    player.loadVideoById(
+        songs[currentSong]
+    );
+
 
     isPlaying = true;
 
-    document.querySelector(".play").textContent = "⏸";
+
+    document.getElementById(
+        "playButton"
+    ).textContent = "⏸";
+
+
+    document.getElementById(
+        "tuningText"
+    ).textContent = "🎵 Now Playing...";
 
 }
 
 
-/* Song khatam → next */
+/* =========================================
+   SONG FINISHED
+   ========================================= */
 
 function songStateChanged(event) {
 
-    if (event.data === YT.PlayerState.ENDED) {
+    if (
+        event.data ===
+        YT.PlayerState.ENDED
+    ) {
+
         nextSong();
+
     }
 
 }
 
 
-/* Listener number ko aas-paas change karna */
+/* =========================================
+   RANDOM LISTENER NUMBER
+   =========================================
 
-let listeners = 2025;
+   Number will stay around the same range
+   and keep changing slightly.
+*/
+
+let listenerCount =
+    Math.floor(
+        Math.random() * 3000
+    ) + 2000;
+
 
 function updateListeners() {
 
-    const change = Math.floor(Math.random() * 11) - 5;
+    let change =
+        Math.floor(
+            Math.random() * 41
+        ) - 20;
 
-    listeners += change;
 
-    if (listeners < 1990) {
-        listeners = 1990;
+    listenerCount += change;
+
+
+    if (listenerCount < 1000) {
+
+        listenerCount = 1000;
+
     }
 
-    if (listeners > 2060) {
-        listeners = 2060;
+
+    if (listenerCount > 9999) {
+
+        listenerCount = 9999;
+
     }
 
-    document.getElementById("listeners").textContent =
-        listeners.toLocaleString();
+
+    document.getElementById(
+        "listenerCount"
+    ).textContent =
+        listenerCount.toLocaleString();
 
 }
 
-setInterval(updateListeners, 4000);
+
+/* Change listener number
+   every 5–10 seconds */
+
+function randomListenerUpdate() {
+
+    updateListeners();
+
+
+    let nextChange =
+        Math.floor(
+            Math.random() * 5000
+        ) + 5000;
+
+
+    setTimeout(
+        randomListenerUpdate,
+        nextChange
+    );
+
+}
+
+
+randomListenerUpdate();
 
 </script>
 
+
 </body>
-    </html>
+            </html>
