@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Kallo Baby ❤️</title><style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+min-height:100vh;
+overflow:hidden;
+font-family:Arial,sans-serif;
+background:radial-gradient(circle at 50% 20%,#7b245f,#2b102f 55%,#090611);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.bg-heart{
+position:fixed;
+font-size:22px;
+bottom:-40px;
+animation:float 7s linear forwards;
+opacity:0;
+z-index:1;
+}
+
+@keyframes float{
+0%{transform:translateY(0) scale(.5);opacity:0}
+15%{opacity:1}
+100%{transform:translateY(-115vh) rotate(360deg) scale(1.4);opacity:0}
+}
+
+.card{
+width:92%;
+max-width:440px;
+max-height:90vh;
+overflow:auto;
+padding:28px 21px;
+border-radius:32px;
+background:rgba(255,255,255,.11);
+border:1px solid rgba(255,255,255,.22);
+backdrop-filter:blur(13px);
+box-shadow:0 25px 70px rgba(0,0,0,.65);
+position:relative;
+z-index:5;
+}
+
+.card::-webkit-scrollbar{display:none}
+
+.cake{
+font-size:72px;
+animation:cake 1.5s infinite;
+}
+
+@keyframes cake{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-10px) rotate(2deg)}
+}
+
+h1{
+font-size:31px;
+margin:10px 0 5px;
+color:#ffd4ed;
+text-shadow:0 0 25px #ff43ae;
+}
+
+.baby{
+font-size:24px;
+font-weight:bold;
+color:#ff9ed5;
+margin-bottom:20px;
+}
+
+.line{
+font-size:17px;
+line-height:1.75;
+margin:12px 0;
+opacity:0;
+transform:translateY(15px);
+animation:show 1s forwards;
+}
+
+.line:nth-child(2){animation-delay:.5s}
+.line:nth-child(3){animation-delay:1.3s}
+.line:nth-child(4){animation-delay:2.1s}
+
+@keyframes show{
+to{opacity:1;transform:translateY(0)}
+}
+
+.love{
+font-size:21px;
+font-weight:bold;
+line-height:1.8;
+color:#ffd1eb;
+margin-top:15px;
+text-shadow:0 0 15px rgba(255,70,170,.5);
+}
+
+.gift{
+font-size:65px;
+margin:18px 0 5px;
+animation:gift 1.2s infinite;
+}
+
+@keyframes gift{
+50%{transform:scale(1.12) rotate(3deg)}
+}
+
+button{
+border:0;
+border-radius:30px;
+padding:14px 25px;
+font-size:16px;
+font-weight:bold;
+color:white;
+background:linear-gradient(135deg,#ff4eae,#ff287f);
+box-shadow:0 7px 30px rgba(255,50,150,.5);
+cursor:pointer;
+margin-top:12px;
+}
+
+button:active{transform:scale(.93)}
+
+#surprise{
+display:none;
+margin-top:20px;
+font-size:18px;
+line-height:1.7;
+animation:pop .8s ease;
+}
+
+@keyframes pop{
+0%{transform:scale(.3);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
+
+.big-love{
+font-size:25px;
+font-weight:bold;
+color:#ffb4df;
+margin-top:15px;
+}
+
+.sparkle{
+position:fixed;
+pointer-events:none;
+z-index:10;
+animation:spark 1.5s forwards;
+}
+
+@keyframes spark{
+0%{transform:scale(.2);opacity:1}
+100%{transform:scale(2) translateY(-70px);opacity:0}
+}
+</style></head><body><div class="card"><div class="cake">🎂</div><h1>Happy Birthday</h1><div class="baby">Kallo Baby ❤️</div><div class="line">
+Aaj ka din mere liye sirf tumhara birthday nahi hai… ❤️
+</div><div class="line">
+Aaj woh din hai jab meri life mein ek aisi ladki aayi,
+jise dekhkar kabhi hasi aati hai,
+kabhi gussa… aur kabhi bas pyaar. 🥹❤️
+</div><div class="line">
+Bas meri ek chhoti si wish hai—
+tum hamesha khush raho,
+hasti raho aur tumhari aankhon mein
+kabhi aansu na aaye. ❤️
+</div><div class="line">
+Aur haan… jitna tum mujhe pareshan karti ho na,
+utna hi zyada tum mujhe pyaari bhi ho. 😂❤️
+</div><div class="love">
+Love you meri Kallo Baby ❤️<br>
+Love you meri Champe 🥰<br>
+Love you ❤️ Love you ❤️ Love you ❤️<br>
+Love you sooooo much! 💋❤️
+</div><div class="gift">🎁</div><button onclick="openSurprise()">
+Open Your Special Surprise 💝
+</button><div id="surprise">Bas ek baat yaad rakhna… ❤️<br>
+Chahe kuch bhi ho, meri life mein tum hamesha special rahogi. 🥹💕
+
+<div class="big-love">
+Happy Birthday Meri Jaan ❤️🥹<br>
+Kallo Baby ♾️❤️
+</div><div style="font-size:45px;margin-top:12px">
+🎂 💖 🥰 🎉 💕 ✨
+</div></div></div><script>
+
+const heartList=["❤️","💕","💖","💗","💓","🥰","✨"];
+
+function createHeart(){
+
+const h=document.createElement("div");
+h.className="bg-heart";
+
+h.innerHTML=
+heartList[Math.floor(Math.random()*heartList.length)];
+
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*28)+"px";
+h.style.animationDuration=(4+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),9000);
+}
+
+setInterval(createHeart,350);
+
+function sparkle(){
+
+const s=document.createElement("div");
+s.className="sparkle";
+s.innerHTML="✨";
+
+s.style.left=(30+Math.random()*40)+"vw";
+s.style.top=(25+Math.random()*50)+"vh";
+
+document.body.appendChild(s);
+
+setTimeout(()=>s.remove(),1600);
+}
+
+function openSurprise(){
+
+document.getElementById("surprise").style.display="block";
+
+for(let i=0;i<45;i++){
+setTimeout(()=>{
+createHeart();
+sparkle();
+},i*55);
+}
+
+}
+
+</script></body>
+</html>
