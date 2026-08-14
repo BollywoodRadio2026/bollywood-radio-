@@ -8,10 +8,12 @@
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden}
+
 body{
 font-family:Arial,sans-serif;
 background:#160014;
-color:white;
+color:#fff;
+touch-action:none;
 }
 
 /* COUNTDOWN */
@@ -23,14 +25,16 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:radial-gradient(circle,#9d1768,#2b0024 60%,#050005);
+background:radial-gradient(circle,#a71970,#310027 60%,#050005);
 }
+
 .introText{
 font-size:20px;
 line-height:1.6;
 text-align:center;
 color:#ffe2f1;
 }
+
 .count{
 font-size:90px;
 font-weight:bold;
@@ -38,6 +42,7 @@ color:#ff91c9;
 text-shadow:0 0 40px #ff1493;
 animation:pulse 1s infinite;
 }
+
 @keyframes pulse{
 50%{transform:scale(1.15);opacity:.65}
 }
@@ -49,12 +54,12 @@ position:fixed;
 inset:0;
 overflow:hidden;
 background:
-radial-gradient(circle at 50% 0%,#ff8ac8,#a31a72 30%,#410832 62%,#10000f);
+radial-gradient(circle at 50% 0%,#ff8ac8,#a51b74 30%,#450833 65%,#10000f);
 }
 
 /* FLOATING WORDS */
 .floatWord{
-position:fixed;
+position:absolute;
 z-index:1;
 font-size:13px;
 font-weight:bold;
@@ -63,6 +68,7 @@ opacity:.35;
 pointer-events:none;
 animation:floatUp linear infinite;
 }
+
 @keyframes floatUp{
 from{transform:translateY(110vh) rotate(-10deg)}
 to{transform:translateY(-15vh) rotate(10deg)}
@@ -72,14 +78,14 @@ to{transform:translateY(-15vh) rotate(10deg)}
 .page{
 position:absolute;
 inset:0;
-padding:25px 20px 110px;
+padding:25px 18px 125px;
 display:flex;
 align-items:center;
 justify-content:center;
 visibility:hidden;
 opacity:0;
 transform:translateX(100%);
-transition:.75s ease;
+transition:.7s ease;
 z-index:10;
 }
 
@@ -98,11 +104,11 @@ transform:translateX(-100%);
 .card{
 width:100%;
 max-width:460px;
-max-height:78vh;
+max-height:77vh;
 overflow:auto;
-padding:28px 22px;
+padding:27px 21px;
 border-radius:32px;
-background:linear-gradient(145deg,rgba(255,250,253,.97),rgba(255,220,238,.95));
+background:linear-gradient(145deg,rgba(255,250,253,.98),rgba(255,220,238,.96));
 color:#4d1536;
 border:2px solid #ffffffaa;
 box-shadow:
@@ -110,6 +116,7 @@ box-shadow:
 0 0 45px #ff39a866;
 backdrop-filter:blur(10px);
 }
+
 .card::-webkit-scrollbar{display:none}
 
 .cake{
@@ -117,6 +124,7 @@ font-size:58px;
 text-align:center;
 animation:bounce 1.5s infinite;
 }
+
 @keyframes bounce{
 50%{transform:translateY(-8px)}
 }
@@ -127,6 +135,7 @@ font-size:31px;
 font-weight:bold;
 color:#c71972;
 }
+
 .name{
 text-align:center;
 font-size:25px;
@@ -149,65 +158,101 @@ font-weight:bold;
 color:#c71972;
 }
 
-/* 15 SECOND BUTTON */
-.continueBox{
+/* CONTROLS */
+.controls{
 position:absolute;
-bottom:22px;
-left:50%;
-transform:translateX(-50%);
-z-index:50;
-width:90%;
-text-align:center;
+bottom:16px;
+left:0;
+width:100%;
+z-index:100;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:0 12px;
 }
 
-.timer{
-font-size:13px;
-color:#ffe0ef;
-margin-bottom:7px;
+.backBtn,
+.continueBtn{
+border:0;
+border-radius:30px;
+padding:12px 18px;
+font-size:15px;
+font-weight:bold;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px #ff1493;
+}
+
+.backBtn{
+background:linear-gradient(90deg,#8b286b,#c73888);
 }
 
 .continueBtn{
 display:none;
-border:0;
-padding:13px 25px;
-border-radius:30px;
-font-size:17px;
-font-weight:bold;
-color:white;
 background:linear-gradient(90deg,#ff168d,#ff5bb3);
-box-shadow:0 0 25px #ff1493;
 animation:buttonPulse 1s infinite;
-cursor:pointer;
+}
+
+.timerBox{
+position:absolute;
+bottom:75px;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+text-align:center;
+}
+
+.timer{
+font-size:14px;
+font-weight:bold;
+color:#fff;
+text-shadow:0 2px 8px #000;
+}
+
+.study{
+font-size:13px;
+margin-top:5px;
+color:#ffe2f0;
+font-weight:bold;
+text-shadow:0 2px 8px #000;
 }
 
 @keyframes buttonPulse{
-50%{transform:scale(1.08);box-shadow:0 0 40px #ff1493}
+50%{
+transform:scale(1.06);
+box-shadow:0 0 35px #ff1493;
+}
 }
 
 /* GIFT */
 .giftPage{
 flex-direction:column;
 }
+
 .gift{
 font-size:125px;
 cursor:pointer;
 filter:drop-shadow(0 0 30px #ff1493);
 animation:giftPulse 1.1s infinite;
 }
+
 @keyframes giftPulse{
 50%{transform:scale(1.12) rotate(-4deg)}
 }
+
 .giftTitle{
 font-size:27px;
 font-weight:bold;
 margin-top:15px;
 }
+
 .giftHint{
 font-size:14px;
 margin-top:8px;
 }
 
-/* FALLING BIRTHDAY */
+/* FALLING */
 .falling{
 position:fixed;
 top:-80px;
@@ -222,6 +267,7 @@ white-space:nowrap;
 pointer-events:none;
 animation:fall 4.5s linear forwards;
 }
+
 @keyframes fall{
 0%{transform:translateY(0) rotate(-5deg);opacity:0}
 10%{opacity:1}
@@ -246,6 +292,7 @@ radial-gradient(circle,#ff55ad,#8e155f 38%,#210019 75%,#050005);
 font-size:21px;
 color:#ffe0ef;
 }
+
 .finalBig{
 font-size:45px;
 font-weight:bold;
@@ -254,6 +301,7 @@ margin-top:10px;
 text-shadow:0 0 15px white,0 0 45px #ff1493;
 animation:finalPop 1.5s ease;
 }
+
 .finalLove{
 font-size:28px;
 font-weight:bold;
@@ -262,6 +310,7 @@ color:#ffd2e8;
 text-shadow:0 0 25px #ff1493;
 animation:fadeUp 2s ease;
 }
+
 .finalName{
 font-size:24px;
 color:#ff9dcc;
@@ -273,6 +322,7 @@ margin-top:15px;
 60%{transform:scale(1.2);opacity:1}
 100%{transform:scale(1)}
 }
+
 @keyframes fadeUp{
 from{opacity:0;transform:translateY(30px)}
 to{opacity:1;transform:translateY(0)}
@@ -286,6 +336,7 @@ font-size:27px;
 pointer-events:none;
 animation:spark 2s forwards;
 }
+
 @keyframes spark{
 from{transform:translate(0,0) scale(.2);opacity:1}
 to{transform:translate(var(--x),var(--y)) scale(1.8) rotate(360deg);opacity:0}
@@ -305,17 +356,20 @@ Tumhare liye ek special surprise hai...
 </div>
 
 
-<!-- STORY -->
 <div id="story">
 
-<!-- PAGE 1 -->
+<!-- PAGE 1 : 25 SEC -->
 <section class="page active">
 
 <div class="card">
 
 <div class="cake">🎂</div>
+
 <div class="title">Happy Birthday</div>
-<div class="name">Meri Kallo Baby ❤️</div>
+
+<div class="name">
+Meri Kallo Baby ❤️
+</div>
 
 <div class="text">
 Aaj woh din hai jab meri Kallo Baby is duniya mein aayi thi… ❤️
@@ -332,17 +386,27 @@ aur kabhi bas chup-chaap yaad karta rehta hoon. ❤️
 
 </div>
 
-<div class="continueBox">
-<div class="timer" id="timer1">❤️ Thoda sa rukna... 15</div>
-<button class="continueBtn" id="btn1" onclick="nextPage(1)">
-❤️ Tap to Continue ❤️
+<div class="timerBox">
+<div class="timer" id="timer1">❤️ 25 seconds...</div>
+<div class="study">Bacche thoda padhai kar lo 😘❤️</div>
+</div>
+
+<div class="controls">
+
+<button class="backBtn" onclick="backPage(1)">
+← Back
 </button>
+
+<button class="continueBtn" id="btn1" onclick="nextPage(1)">
+❤️ Tap to Continue
+</button>
+
 </div>
 
 </section>
 
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 : 40 SEC -->
 <section class="page">
 
 <div class="card">
@@ -372,17 +436,27 @@ tumhari meri jodi hamesha aise hi bani rahe. ❤️
 
 </div>
 
-<div class="continueBox">
-<div class="timer" id="timer2">❤️ Pura padh lena... 15</div>
-<button class="continueBtn" id="btn2" onclick="nextPage(2)">
-❤️ Tap to Continue ❤️
+<div class="timerBox">
+<div class="timer" id="timer2">❤️ 40 seconds...</div>
+<div class="study">Bacche thoda padhai kar lo 😘❤️</div>
+</div>
+
+<div class="controls">
+
+<button class="backBtn" onclick="backPage(2)">
+← Back
 </button>
+
+<button class="continueBtn" id="btn2" onclick="nextPage(2)">
+❤️ Tap to Continue
+</button>
+
 </div>
 
 </section>
 
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 : 15 SEC -->
 <section class="page">
 
 <div class="card">
@@ -407,20 +481,32 @@ LOVE YOU SO MUCHHHH 😘💋❤️
 
 </div>
 
-<div class="continueBox">
-<div class="timer" id="timer3">❤️ Pura message padh lena... 15</div>
-<button class="continueBtn" id="btn3" onclick="nextPage(3)">
-❤️ Tap to Continue ❤️
+<div class="timerBox">
+<div class="timer" id="timer3">❤️ 15 seconds...</div>
+<div class="study">Bacche thoda padhai kar lo 😘❤️</div>
+</div>
+
+<div class="controls">
+
+<button class="backBtn" onclick="backPage(3)">
+← Back
 </button>
+
+<button class="continueBtn" id="btn3" onclick="nextPage(3)">
+❤️ Tap to Continue
+</button>
+
 </div>
 
 </section>
 
 
-<!-- PAGE 4 GIFT -->
+<!-- GIFT PAGE -->
 <section class="page giftPage">
 
-<div class="gift" onclick="openGift()">🎁</div>
+<div class="gift" onclick="openGift()">
+🎁
+</div>
 
 <div class="giftTitle">
 Gift ko touch karo ❤️
@@ -428,6 +514,14 @@ Gift ko touch karo ❤️
 
 <div class="giftHint">
 Ab tumhare liye asli surprise hai... 🥰
+</div>
+
+<div class="controls">
+
+<button class="backBtn" onclick="backPage(4)">
+← Back
+</button>
+
 </div>
 
 </section>
@@ -461,11 +555,13 @@ Meri Kallo Baby ❤️
 <script>
 
 /* COUNTDOWN */
+
 let number=3;
 
 let countdown=setInterval(function(){
 
 number--;
+
 document.getElementById("count").innerText=number;
 
 if(number===0){
@@ -486,11 +582,11 @@ startTimer(1);
 },1000);
 
 
-/* FLOATING BIRTHDAY WORDS */
+/* FLOATING WORDS */
 
 const words=[
 "Happy Birthday ❤️",
-"Baby 💕",
+"Happy Birthday Baby 💕",
 "Janu 🥰",
 "Sona ❤️",
 "Princess 👑",
@@ -501,7 +597,7 @@ const words=[
 "Champe 💕"
 ];
 
-for(let i=0;i<24;i++){
+for(let i=0;i<28;i++){
 
 let w=document.createElement("div");
 
@@ -510,7 +606,9 @@ w.className="floatWord";
 w.innerText=words[Math.floor(Math.random()*words.length)];
 
 w.style.left=Math.random()*95+"vw";
+
 w.style.animationDuration=(8+Math.random()*10)+"s";
+
 w.style.animationDelay=(-Math.random()*12)+"s";
 
 document.getElementById("story").appendChild(w);
@@ -518,32 +616,48 @@ document.getElementById("story").appendChild(w);
 }
 
 
-/* 15 SECOND TIMER */
+/* TIMINGS */
 
-let timerRunning={};
+const times={
+1:25,
+2:40,
+3:15
+};
+
+let timers={};
+
+
+/* START TIMER */
 
 function startTimer(pageNo){
 
-if(timerRunning[pageNo])return;
+if(timers[pageNo]){
+clearInterval(timers[pageNo]);
+}
 
-timerRunning[pageNo]=true;
-
-let seconds=15;
+let seconds=times[pageNo];
 
 let timer=document.getElementById("timer"+pageNo);
 let button=document.getElementById("btn"+pageNo);
 
-let interval=setInterval(function(){
+button.style.display="none";
+
+timer.style.display="block";
+
+timer.innerText="❤️ "+seconds+" seconds...";
+
+timers[pageNo]=setInterval(function(){
 
 seconds--;
 
-timer.innerText="❤️ Thoda sa padh lo... "+seconds;
+timer.innerText="❤️ "+seconds+" seconds...";
 
 if(seconds<=0){
 
-clearInterval(interval);
+clearInterval(timers[pageNo]);
 
-timer.style.display="none";
+timer.innerText="❤️ Ab padh liya?";
+
 button.style.display="inline-block";
 
 }
@@ -562,6 +676,7 @@ let pages=document.querySelectorAll(".page");
 pages[number-1].classList.remove("active");
 pages[number-1].classList.add("exit");
 
+pages[number].classList.remove("exit");
 pages[number].classList.add("active");
 
 if(number<3){
@@ -569,6 +684,32 @@ if(number<3){
 setTimeout(function(){
 
 startTimer(number+1);
+
+},750);
+
+}
+
+}
+
+
+/* BACK PAGE */
+
+function backPage(number){
+
+let pages=document.querySelectorAll(".page");
+
+if(number<=1)return;
+
+pages[number-1].classList.remove("active");
+
+pages[number-2].classList.remove("exit");
+pages[number-2].classList.add("active");
+
+if(number-1<=3){
+
+setTimeout(function(){
+
+startTimer(number-1);
 
 },750);
 
@@ -603,7 +744,8 @@ const birthdayMessages=[
 ];
 
 
-/* FALLING */
+/* FALLING MESSAGE */
+
 function fallingMessage(){
 
 let m=document.createElement("div");
@@ -630,7 +772,7 @@ m.remove();
 }
 
 
-/* HEART EXPLOSION */
+/* EXPLOSION */
 
 function explosion(){
 
@@ -650,6 +792,7 @@ s.style.left="50%";
 s.style.top="50%";
 
 s.style.setProperty("--x",(Math.random()*1000-500)+"px");
+
 s.style.setProperty("--y",(Math.random()*850-425)+"px");
 
 document.body.appendChild(s);
@@ -667,7 +810,7 @@ setTimeout(()=>s.remove(),2100);
 
 function openGift(){
 
-for(let i=0;i<55;i++){
+for(let i=0;i<60;i++){
 
 setTimeout(function(){
 
@@ -682,6 +825,7 @@ explosion();
 setTimeout(function(){
 
 document.getElementById("story").style.display="none";
+
 document.getElementById("final").style.display="flex";
 
 explosion();
