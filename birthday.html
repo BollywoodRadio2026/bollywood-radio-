@@ -4,181 +4,201 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Happy Birthday Kallo Baby ❤️</title><style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden}
+
+html,body{
+margin:0;
+width:100%;
+height:100%;
+overflow:hidden;
+}
 
 body{
 font-family:Arial,sans-serif;
 background:#05000b;
 color:white;
-text-align:center;
 }
 
+/* COUNTDOWN */
 #intro{
 position:fixed;
 inset:0;
-z-index:100;
+z-index:1000;
 display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:radial-gradient(circle,#4b123d,#120016 55%,#030006);
-transition:1s;
+background:radial-gradient(circle,#65104d,#180019 55%,#020005);
+transition:1.2s;
 }
 
 .introText{
 font-size:20px;
-color:#ffd5ed;
+color:#ffd9ed;
+text-align:center;
 margin-bottom:25px;
-animation:pulse 1.5s infinite;
 }
 
 .count{
-font-size:80px;
+font-size:90px;
 font-weight:bold;
-color:#ff8bca;
-text-shadow:0 0 35px #ff1493;
+color:#ff91c9;
+text-shadow:0 0 40px #ff1493;
+animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-50%{opacity:.5;transform:scale(1.04)}
+50%{transform:scale(1.15);opacity:.65}
 }
 
+/* MAIN */
 #main{
 position:fixed;
 inset:0;
-overflow:auto;
 display:none;
+overflow:auto;
 background:
-radial-gradient(circle at 50% 10%,#ff3e9d 0,#5d174f 22%,#16051b 58%,#030006 100%);
+radial-gradient(circle at 50% 0%,#ff5aac,#71135d 27%,#1b061e 65%,#030006);
 }
 
 #main::-webkit-scrollbar{display:none}
 
-.card{
+/* PAGE */
+.page{
 width:92%;
-max-width:470px;
-margin:30px auto 50px;
-padding:28px 20px;
-border-radius:35px;
-background:rgba(10,0,12,.52);
-border:1px solid rgba(255,255,255,.22);
-backdrop-filter:blur(16px);
-box-shadow:0 0 70px rgba(255,20,147,.25);
+max-width:480px;
+margin:30px auto 60px;
+perspective:1200px;
+}
+
+.paper{
+padding:30px 21px 35px;
+border-radius:30px;
+background:linear-gradient(145deg,#fff7fb,#ffe4f1);
+color:#4a1234;
+box-shadow:
+0 15px 50px rgba(0,0,0,.45),
+0 0 50px rgba(255,40,160,.3);
+border:2px solid rgba(255,255,255,.7);
+animation:pageOpen 1.5s ease;
+transform-origin:left center;
+}
+
+@keyframes pageOpen{
+0%{
+opacity:0;
+transform:rotateY(-75deg) translateX(-40px);
+}
+100%{
+opacity:1;
+transform:rotateY(0) translateX(0);
+}
 }
 
 .cake{
 font-size:65px;
+text-align:center;
 animation:bounce 1.4s infinite;
 }
 
 @keyframes bounce{
-50%{transform:translateY(-10px)}
+50%{transform:translateY(-8px)}
 }
 
 h1{
+text-align:center;
 font-size:34px;
-margin:5px 0;
-color:#ffe1f1;
-text-shadow:0 0 25px #ff1493;
+margin:4px 0;
+color:#c51d73;
 }
 
 .name{
+text-align:center;
 font-size:26px;
 font-weight:bold;
-color:#ff9ed0;
-margin-bottom:22px;
+color:#ed3b94;
+margin-bottom:25px;
 }
 
 .text{
 font-size:16px;
-line-height:1.72;
-margin:15px 0;
-color:#fff4fa;
+line-height:1.75;
+margin:18px 0;
 }
 
 .love{
+text-align:center;
 font-size:20px;
 font-weight:bold;
-line-height:1.8;
-color:#ffd0e8;
-margin:22px 0;
-text-shadow:0 0 18px #ff1493;
+line-height:1.9;
+color:#c51d73;
+margin-top:25px;
 }
 
 .giftBox{
-margin:25px auto 5px;
 width:130px;
 height:130px;
+margin:28px auto 8px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:85px;
+font-size:82px;
 cursor:pointer;
 animation:gift 1.2s infinite;
-filter:drop-shadow(0 0 25px #ff1493);
-user-select:none;
+filter:drop-shadow(0 0 20px #ff269b);
 }
 
 @keyframes gift{
-0%,100%{transform:scale(1) rotate(0)}
+0%,100%{transform:scale(1)}
 50%{transform:scale(1.12) rotate(-4deg)}
 }
 
 .touch{
+text-align:center;
 font-size:13px;
-color:#ffd5e9;
+color:#8b315f;
 }
 
+/* CENTER MESSAGE */
 #surprise{
 display:none;
+text-align:center;
 font-size:27px;
 font-weight:bold;
-line-height:1.35;
+color:#d51d78;
 margin:20px 0;
-color:#fff;
-text-shadow:0 0 25px #ff1493;
 animation:pop .7s ease;
 }
 
 @keyframes pop{
 0%{transform:scale(.2);opacity:0}
-70%{transform:scale(1.15);opacity:1}
+70%{transform:scale(1.15)}
 100%{transform:scale(1);opacity:1}
 }
 
-#final{
-font-size:27px;
-font-weight:bold;
-color:#ffacd7;
-margin-top:25px;
-}
-
-/* Falling birthday messages */
+/* FALLING BIRTHDAY MESSAGES */
 .fallingMessage{
 position:fixed;
-top:-100px;
-z-index:300;
+top:-90px;
+z-index:500;
 pointer-events:none;
-font-size:18px;
+font-size:17px;
 font-weight:bold;
 color:white;
 padding:10px 16px;
 border-radius:25px;
-background:rgba(255,40,160,.78);
-border:1px solid rgba(255,255,255,.45);
+background:rgba(220,25,130,.9);
+border:1px solid rgba(255,255,255,.7);
 box-shadow:0 0 22px rgba(255,20,147,.8);
 white-space:nowrap;
-animation:messageFall 4.5s linear forwards;
+animation:fallMessage 4.5s linear forwards;
 }
 
-@keyframes messageFall{
+@keyframes fallMessage{
 0%{
 transform:translateY(0) rotate(-5deg) scale(.7);
 opacity:0;
 }
-10%{
-opacity:1;
-}
+10%{opacity:1}
 50%{
 transform:translateY(55vh) rotate(5deg) scale(1);
 opacity:1;
@@ -189,73 +209,167 @@ opacity:0;
 }
 }
 
-.particle{
+/* FINAL SCREEN */
+#finalScreen{
 position:fixed;
-z-index:200;
-pointer-events:none;
-font-size:22px;
-animation:fly 1.7s forwards;
+inset:0;
+z-index:900;
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background:
+radial-gradient(circle,#ff3d9d,#6d124f 38%,#100012 75%,#020005);
+text-align:center;
+overflow:hidden;
 }
 
-@keyframes fly{
+.finalSmall{
+font-size:22px;
+color:#ffd7ed;
+margin-bottom:10px;
+animation:fadeIn 1s ease;
+}
+
+.finalBig{
+font-size:46px;
+font-weight:bold;
+line-height:1.15;
+color:#fff;
+text-shadow:
+0 0 12px #ff8ac7,
+0 0 35px #ff1493,
+0 0 70px #ff1493;
+animation:finalPop 1.5s ease;
+}
+
+.finalLove{
+font-size:29px;
+font-weight:bold;
+margin-top:20px;
+color:#ffd0e8;
+text-shadow:0 0 25px #ff1493;
+animation:lovePop 2s ease;
+}
+
+.finalName{
+font-size:25px;
+margin-top:18px;
+color:#ff9dcc;
+animation:fadeIn 2.5s ease;
+}
+
+@keyframes finalPop{
+0%{transform:scale(.1);opacity:0}
+60%{transform:scale(1.2);opacity:1}
+100%{transform:scale(1)}
+}
+
+@keyframes lovePop{
+0%{opacity:0;transform:translateY(30px)}
+100%{opacity:1;transform:translateY(0)}
+}
+
+@keyframes fadeIn{
+0%{opacity:0}
+100%{opacity:1}
+}
+
+/* HEARTS / SPARKLES */
+.particle{
+position:fixed;
+z-index:1000;
+pointer-events:none;
+font-size:25px;
+animation:particleFly 2s forwards;
+}
+
+@keyframes particleFly{
 0%{
 transform:translate(0,0) scale(.2);
 opacity:1;
 }
 100%{
-transform:translate(var(--x),var(--y)) scale(1.7) rotate(360deg);
+transform:translate(var(--x),var(--y)) scale(1.8) rotate(360deg);
 opacity:0;
 }
 }
 
 .firework{
 position:fixed;
-z-index:140;
-font-size:30px;
+z-index:1000;
+font-size:35px;
 pointer-events:none;
-animation:boom 1.5s forwards;
+animation:firework 1.7s forwards;
 }
 
-@keyframes boom{
-0%{transform:scale(.1);opacity:1}
-60%{transform:scale(2.4);opacity:1}
+@keyframes firework{
+0%{transform:scale(.1);opacity:0}
+30%{transform:scale(1.5);opacity:1}
 100%{transform:scale(3.5);opacity:0}
 }
-
-</style></head><body><div id="intro">
-<div class="introText">Kallo Baby ❤️ tumhare liye kuch hai...</div>
+</style></head><body><!-- COUNTDOWN --><div id="intro">
+<div class="introText">
+Kallo Baby ❤️<br>
+Tumhare liye ek chhota sa surprise hai...
+</div>
 <div id="count" class="count">3</div>
-</div><div id="main"><div class="card"><div class="cake">🎂</div><h1>Happy Birthday</h1><div class="name">Kallo Baby ❤️</div><div class="text">
-Aaj woh din hai jab meri life mein ek aisi ladki aayi,
-jise dekhkar kabhi pyaar hota hai aur kabhi bas tumhe dekhte rehne ka mann karta hai. ❤️
+</div><!-- MAIN BIRTHDAY LETTER --><div id="main"><div class="page"><div class="paper"><div class="cake">🎂</div><h1>Happy Birthday</h1><div class="name">
+Kallo Baby ❤️
 </div><div class="text">
-Kabhi-kabhi toh mann karta hai ki tumhe kha jaaun 😋💋❤️
+Aaj woh din hai jab meri Kallo Baby is duniya mein aayi thi… ❤️
+Aur sach bolun toh mujhe nahi pata tha ki ek din tum meri zindagi mein itni khaas ban jaogi. 🥺❤️
 </div><div class="text">
-Rab se bas yahi fariyad karta hoon ki tum hamesha khush raho,
-hasti raho… tumhari aankhon mein kabhi aansu aaye,
+Tumhara birthday mere liye sirf ek date nahi hai,
+yeh woh din hai jiske liye main dil se Rab ko thank you bolta hoon…
+kyunki isi din meri woh favourite insaan duniya mein aayi,
+jise main kabhi pyaar karta hoon, kabhi pareshaan karta hoon,
+aur kabhi bas chup-chaap yaad karta rehta hoon. ❤️
+</div><div class="text">
+Pata hai, main har waqt perfect nahi hota…
+kabhi busy rehta hoon, kabhi baat nahi kar pata,
+kabhi tumhe woh sab bol nahi pata jo mere dil mein hota hai.
+Lekin ek baat hamesha sach rahegi —
+tum mere liye bahut zyada special ho. ❤️
+</div><div class="text">
+Main Rab se bas itna chahta hoon ki tum hamesha khush raho,
+hasti raho, tumhari aankhon mein kabhi aansu na aaye…
 bas tum mere paas aa jao aur main tumhe 👅🍑😋🍼💋❤️
 </div><div class="text">
-Bhale hi main busy rehta hoon, har waqt tumse baat nahi kar pata,
-par iska matlab ye bilkul nahi ki main tumhe kam pyaar karta hoon. ❤️
-Main pyaar bahut karta hoon, bas har baar bol nahi pata. 🥺❤️
+Aaj tumhara birthday hai,
+toh aaj meri taraf se tumhare liye bas itni si wish hai —
+tumhari har khwahish poori ho,
+tumhare chehre par hamesha ye pyaari si muskurahat bani rahe,
+aur chahe kitne bhi saal beet jaayein,
+tumhari meri jodi hamesha aise hi bani rahe. ❤️
 </div><div class="text">
-Aur haan… kabhi-kabhi tumhara birthday bhi bhool jaata hoon.
-Par main toh chhota hoon na, galti ho jaati hai. ❤️
-</div><div class="text">
-Bas tum hamesha mere saath rehna,
-mujhe aise hi pareshaan karna aur apni cute si smile se
-mera dimaag kharab karte rehna. ❤️
+Aur haan… main chhota hoon, galtiyan hoti rehti hain. ❤️
+Kabhi birthday yaad reh jaata hai, kabhi bhool bhi jaata hoon,
+lekin tumhe pyaar karna kabhi nahi bhoolta. 🥺❤️
 </div><div class="love">
+Happy Birthday Meri Kallo Baby ❤️<br>
 Love you meri Kallo Baby ❤️<br>
 Love you meri Champe ❤️<br>
 Love you ❤️ Love you ❤️ Love you ❤️<br>
 LOVE YOU SO MUCHHHH 😘💋❤️
-</div><div class="giftBox" onclick="surprise()">🎁</div><div class="touch">
-🎁 Is gift ko baar-baar touch karna ❤️
-</div><div id="surprise"></div><div id="final">
-❤️ Forever Meri Kallo Baby ❤️
-</div></div>
-</div><script>
+</div><!-- GIFT --><div class="giftBox" onclick="surprise()">
+🎁
+</div><div class="touch">
+🎁 Gift par baar-baar tap karna ❤️
+</div><div id="surprise"></div></div>
+</div>
+</div><!-- FINAL CINEMATIC SCREEN --><div id="finalScreen"><div class="finalSmall">
+Ek baar aur... ❤️
+</div><div class="finalBig">
+🎂 HAPPY BIRTHDAY<br>
+BABY ❤️
+</div><div class="finalLove">
+LOVE YOU SO MUCHHHH 😘💋❤️
+</div><div class="finalName">
+Meri Kallo Baby ❤️
+</div></div><script>
+
+/* COUNTDOWN */
 
 let n=3;
 
@@ -287,7 +401,7 @@ document.getElementById("main").style.display="block";
 },1000);
 
 
-/* Center surprise messages */
+/* CENTER GIFT MESSAGES */
 
 const messages=[
 "🎉 Happy Birthday Baby ❤️",
@@ -300,9 +414,10 @@ const messages=[
 let i=0;
 
 
-/* Falling messages */
+/* FALLING MESSAGES */
 
 const fallingMessages=[
+
 "❤️ Happy Birthday Janu",
 "💕 Happy Birthday Sona",
 "🎂 Happy Birthday Babu",
@@ -323,6 +438,7 @@ const fallingMessages=[
 "💗 Happy Birthday Love",
 "👑 Happy Birthday My Princess",
 "❤️ Happy Birthday Forever Love"
+
 ];
 
 
@@ -339,9 +455,11 @@ Math.floor(Math.random()*fallingMessages.length)
 
 m.style.left=(Math.random()*82+3)+"vw";
 
-m.style.animationDuration=(3.5+Math.random()*2)+"s";
+m.style.animationDuration=
+(3.5+Math.random()*2)+"s";
 
-m.style.fontSize=(15+Math.random()*7)+"px";
+m.style.fontSize=
+(15+Math.random()*7)+"px";
 
 document.body.appendChild(m);
 
@@ -350,7 +468,11 @@ setTimeout(()=>m.remove(),6000);
 }
 
 
+/* GIFT TAP */
+
 function surprise(){
+
+/* CENTER MESSAGE */
 
 let box=document.getElementById("surprise");
 
@@ -364,27 +486,31 @@ box.style.display="block";
 
 i++;
 
-if(i>=messages.length)i=0;
+if(i>=messages.length){
+
+i=0;
+
+}
 
 },100);
 
 
-/* Every tap creates MANY falling messages */
+/* LOTS OF FALLING BIRTHDAY MESSAGES */
 
-for(let x=0;x<22;x++){
+for(let x=0;x<28;x++){
 
 setTimeout(()=>{
 
 createFallingMessage();
 
-},x*90);
+},x*80);
 
 }
 
 
-/* Heart explosion */
+/* HEART EXPLOSION */
 
-for(let x=0;x<35;x++){
+for(let x=0;x<40;x++){
 
 setTimeout(()=>{
 
@@ -392,34 +518,35 @@ let p=document.createElement("div");
 
 p.className="particle";
 
-p.innerHTML=["❤️","💕","💖","✨","😘","🎉"]
-[Math.floor(Math.random()*6)];
+p.innerHTML=
+["❤️","💕","💖","✨","😘","🎀","🎉"]
+[Math.floor(Math.random()*7)];
 
 p.style.left="50%";
-p.style.top="58%";
+p.style.top="55%";
 
 p.style.setProperty(
 "--x",
-(Math.random()*360-180)+"px"
+(Math.random()*500-250)+"px"
 );
 
 p.style.setProperty(
 "--y",
-(Math.random()*-300-40)+"px"
+(Math.random()*-450-50)+"px"
 );
 
 document.body.appendChild(p);
 
-setTimeout(()=>p.remove(),1800);
+setTimeout(()=>p.remove(),2100);
 
-},x*25);
+},x*20);
 
 }
 
 
-/* Fireworks */
+/* FIREWORKS */
 
-for(let x=0;x<10;x++){
+for(let x=0;x<12;x++){
 
 setTimeout(()=>{
 
@@ -427,22 +554,76 @@ let f=document.createElement("div");
 
 f.className="firework";
 
-f.innerHTML=["🎆","✨","💖"]
-[Math.floor(Math.random()*3)];
+f.innerHTML=
+["🎆","✨","💖","🎉"]
+[Math.floor(Math.random()*4)];
 
-f.style.left=(10+Math.random()*80)+"vw";
+f.style.left=
+(5+Math.random()*90)+"vw";
 
-f.style.top=(10+Math.random()*60)+"vh";
+f.style.top=
+(5+Math.random()*70)+"vh";
 
 document.body.appendChild(f);
 
-setTimeout(()=>f.remove(),1600);
+setTimeout(()=>f.remove(),1800);
 
 },x*100);
+
+}
+
+
+/* FINAL SCREEN AFTER A LITTLE DELAY */
+
+setTimeout(()=>{
+
+document.getElementById("finalScreen").style.display="flex";
+
+finalExplosion();
+
+},2600);
+
+}
+
+
+/* FINAL BIG ANIMATION */
+
+function finalExplosion(){
+
+for(let x=0;x<70;x++){
+
+setTimeout(()=>{
+
+let p=document.createElement("div");
+
+p.className="particle";
+
+p.innerHTML=
+["❤️","💖","💕","✨","😘","🎉","🎀"]
+[Math.floor(Math.random()*7)];
+
+p.style.left="50%";
+p.style.top="50%";
+
+p.style.setProperty(
+"--x",
+(Math.random()*1000-500)+"px"
+);
+
+p.style.setProperty(
+"--y",
+(Math.random()*900-450)+"px"
+);
+
+document.body.appendChild(p);
+
+setTimeout(()=>p.remove(),2200);
+
+},x*18);
 
 }
 
 }
 
 </script></body>
-</html>
+  </html>
