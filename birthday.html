@@ -7,19 +7,11 @@
 
 <style>
 *{box-sizing:border-box}
-
-html,body{
-margin:0;
-width:100%;
-height:100%;
-overflow:hidden;
-font-family:Arial,sans-serif;
-}
-
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
 body{
+font-family:Arial,sans-serif;
 background:#160014;
-color:#fff;
-touch-action:pan-y;
+color:white;
 }
 
 /* COUNTDOWN */
@@ -31,24 +23,21 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:radial-gradient(circle,#8b1761,#25001f 60%,#050005);
+background:radial-gradient(circle,#9d1768,#2b0024 60%,#050005);
 }
-
 .introText{
 font-size:20px;
-text-align:center;
 line-height:1.6;
-color:#ffe1f1;
+text-align:center;
+color:#ffe2f1;
 }
-
 .count{
 font-size:90px;
 font-weight:bold;
 color:#ff91c9;
-text-shadow:0 0 35px #ff1493;
+text-shadow:0 0 40px #ff1493;
 animation:pulse 1s infinite;
 }
-
 @keyframes pulse{
 50%{transform:scale(1.15);opacity:.65}
 }
@@ -58,54 +47,78 @@ animation:pulse 1s infinite;
 display:none;
 position:fixed;
 inset:0;
-background:
-radial-gradient(circle at 50% 0%,#ff69b4,#741457 35%,#190018 75%);
 overflow:hidden;
+background:
+radial-gradient(circle at 50% 0%,#ff8ac8,#a31a72 30%,#410832 62%,#10000f);
 }
 
+/* FLOATING WORDS */
+.floatWord{
+position:fixed;
+z-index:1;
+font-size:13px;
+font-weight:bold;
+color:#ffd7ec;
+opacity:.35;
+pointer-events:none;
+animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+from{transform:translateY(110vh) rotate(-10deg)}
+to{transform:translateY(-15vh) rotate(10deg)}
+}
+
+/* PAGE */
 .page{
 position:absolute;
 inset:0;
-padding:25px 20px;
+padding:25px 20px 110px;
 display:flex;
 align-items:center;
 justify-content:center;
-opacity:0;
 visibility:hidden;
+opacity:0;
 transform:translateX(100%);
-transition:.65s ease;
+transition:.75s ease;
+z-index:10;
 }
 
 .page.active{
-opacity:1;
 visibility:visible;
+opacity:1;
 transform:translateX(0);
 }
 
-.page.old{
-opacity:0;
+.page.exit{
 visibility:hidden;
+opacity:0;
 transform:translateX(-100%);
 }
 
 .card{
 width:100%;
-max-width:450px;
-max-height:82vh;
+max-width:460px;
+max-height:78vh;
 overflow:auto;
 padding:28px 22px;
-border-radius:28px;
-background:linear-gradient(145deg,#fff9fc,#ffe3f0);
+border-radius:32px;
+background:linear-gradient(145deg,rgba(255,250,253,.97),rgba(255,220,238,.95));
 color:#4d1536;
-box-shadow:0 15px 60px #0008,0 0 35px #ff55ae66;
 border:2px solid #ffffffaa;
+box-shadow:
+0 15px 60px #0008,
+0 0 45px #ff39a866;
+backdrop-filter:blur(10px);
 }
-
 .card::-webkit-scrollbar{display:none}
 
 .cake{
-font-size:55px;
+font-size:58px;
 text-align:center;
+animation:bounce 1.5s infinite;
+}
+@keyframes bounce{
+50%{transform:translateY(-8px)}
 }
 
 .title{
@@ -113,12 +126,10 @@ text-align:center;
 font-size:31px;
 font-weight:bold;
 color:#c71972;
-margin:5px 0 2px;
 }
-
 .name{
 text-align:center;
-font-size:24px;
+font-size:25px;
 font-weight:bold;
 color:#ed3b94;
 margin-bottom:20px;
@@ -127,107 +138,90 @@ margin-bottom:20px;
 .text{
 font-size:16px;
 line-height:1.75;
-margin:14px 0;
+margin:15px 0;
 }
 
 .love{
 text-align:center;
 font-size:20px;
-line-height:1.8;
+line-height:1.9;
 font-weight:bold;
 color:#c71972;
 }
 
-/* SWIPE GUIDE */
-.swipeGuide{
+/* 15 SECOND BUTTON */
+.continueBox{
 position:absolute;
 bottom:22px;
 left:50%;
 transform:translateX(-50%);
+z-index:50;
 width:90%;
 text-align:center;
-font-weight:bold;
-color:#fff;
-text-shadow:0 2px 8px #000;
 }
 
-.swipeText{
+.timer{
+font-size:13px;
+color:#ffe0ef;
+margin-bottom:7px;
+}
+
+.continueBtn{
+display:none;
+border:0;
+padding:13px 25px;
+border-radius:30px;
 font-size:17px;
-margin-bottom:5px;
+font-weight:bold;
+color:white;
+background:linear-gradient(90deg,#ff168d,#ff5bb3);
+box-shadow:0 0 25px #ff1493;
+animation:buttonPulse 1s infinite;
+cursor:pointer;
 }
 
-.arrow{
-font-size:38px;
-display:inline-block;
-animation:arrowMove 1s infinite;
-}
-
-@keyframes arrowMove{
-0%,100%{transform:translateX(-8px)}
-50%{transform:translateX(20px)}
-}
-
-.hand{
-font-size:32px;
-display:inline-block;
-animation:handSwipe 1.2s infinite;
-}
-
-@keyframes handSwipe{
-0%{transform:translateX(-15px)}
-50%{transform:translateX(35px)}
-100%{transform:translateX(-15px)}
-}
-
-.smallHint{
-font-size:12px;
-opacity:.9;
-margin-top:3px;
+@keyframes buttonPulse{
+50%{transform:scale(1.08);box-shadow:0 0 40px #ff1493}
 }
 
 /* GIFT */
 .giftPage{
 flex-direction:column;
 }
-
 .gift{
-font-size:120px;
+font-size:125px;
 cursor:pointer;
-filter:drop-shadow(0 0 25px #ff1493);
-animation:giftPulse 1.2s infinite;
+filter:drop-shadow(0 0 30px #ff1493);
+animation:giftPulse 1.1s infinite;
 }
-
 @keyframes giftPulse{
 50%{transform:scale(1.12) rotate(-4deg)}
 }
-
 .giftTitle{
-font-size:26px;
+font-size:27px;
 font-weight:bold;
 margin-top:15px;
 }
-
 .giftHint{
-font-size:15px;
+font-size:14px;
 margin-top:8px;
 }
 
-/* FALLING MESSAGES */
+/* FALLING BIRTHDAY */
 .falling{
 position:fixed;
 top:-80px;
 z-index:5000;
 padding:9px 15px;
-border-radius:22px;
-background:#e32686;
-box-shadow:0 0 20px #ff4bad;
-font-weight:bold;
+border-radius:25px;
+background:linear-gradient(90deg,#e51b83,#ff51ae);
+box-shadow:0 0 25px #ff3ca6;
 font-size:16px;
+font-weight:bold;
 white-space:nowrap;
 pointer-events:none;
 animation:fall 4.5s linear forwards;
 }
-
 @keyframes fall{
 0%{transform:translateY(0) rotate(-5deg);opacity:0}
 10%{opacity:1}
@@ -244,38 +238,34 @@ align-items:center;
 justify-content:center;
 flex-direction:column;
 text-align:center;
-overflow:hidden;
-background:radial-gradient(circle,#ff4da8,#6d1050 40%,#0c000d 80%);
+background:
+radial-gradient(circle,#ff55ad,#8e155f 38%,#210019 75%,#050005);
 }
 
-.finalTop{
-font-size:22px;
-color:#ffd8eb;
-animation:fade 1s ease;
+.finalSmall{
+font-size:21px;
+color:#ffe0ef;
 }
-
 .finalBig{
-font-size:46px;
+font-size:45px;
 font-weight:bold;
 line-height:1.15;
 margin-top:10px;
-text-shadow:0 0 15px #fff,0 0 40px #ff1493;
-animation:finalPop 1.4s ease;
+text-shadow:0 0 15px white,0 0 45px #ff1493;
+animation:finalPop 1.5s ease;
 }
-
 .finalLove{
 font-size:28px;
 font-weight:bold;
-margin-top:22px;
-color:#ffd1e8;
+margin-top:20px;
+color:#ffd2e8;
 text-shadow:0 0 25px #ff1493;
 animation:fadeUp 2s ease;
 }
-
 .finalName{
 font-size:24px;
-margin-top:15px;
 color:#ff9dcc;
+margin-top:15px;
 }
 
 @keyframes finalPop{
@@ -283,28 +273,22 @@ color:#ff9dcc;
 60%{transform:scale(1.2);opacity:1}
 100%{transform:scale(1)}
 }
-
-@keyframes fade{
-from{opacity:0}
-to{opacity:1}
-}
-
 @keyframes fadeUp{
 from{opacity:0;transform:translateY(30px)}
 to{opacity:1;transform:translateY(0)}
 }
 
+/* SPARKS */
 .spark{
 position:fixed;
 z-index:9999;
-font-size:28px;
+font-size:27px;
 pointer-events:none;
 animation:spark 2s forwards;
 }
-
 @keyframes spark{
 from{transform:translate(0,0) scale(.2);opacity:1}
-to{transform:translate(var(--x),var(--y)) scale(1.8);opacity:0}
+to{transform:translate(var(--x),var(--y)) scale(1.8) rotate(360deg);opacity:0}
 }
 </style>
 </head>
@@ -315,7 +299,7 @@ to{transform:translate(var(--x),var(--y)) scale(1.8);opacity:0}
 <div id="intro">
 <div class="introText">
 Kallo Baby ❤️<br>
-Tumhare liye ek chhota sa surprise hai...
+Tumhare liye ek special surprise hai...
 </div>
 <div id="count" class="count">3</div>
 </div>
@@ -330,7 +314,6 @@ Tumhare liye ek chhota sa surprise hai...
 <div class="card">
 
 <div class="cake">🎂</div>
-
 <div class="title">Happy Birthday</div>
 <div class="name">Meri Kallo Baby ❤️</div>
 
@@ -349,11 +332,11 @@ aur kabhi bas chup-chaap yaad karta rehta hoon. ❤️
 
 </div>
 
-<div class="swipeGuide">
-<div class="swipeText">👉 RIGHT SWIPE KARO</div>
-<span class="hand">👆</span>
-<span class="arrow">➡️</span>
-<div class="smallHint">Agla page kholne ke liye right swipe karo ❤️</div>
+<div class="continueBox">
+<div class="timer" id="timer1">❤️ Thoda sa rukna... 15</div>
+<button class="continueBtn" id="btn1" onclick="nextPage(1)">
+❤️ Tap to Continue ❤️
+</button>
 </div>
 
 </section>
@@ -389,11 +372,11 @@ tumhari meri jodi hamesha aise hi bani rahe. ❤️
 
 </div>
 
-<div class="swipeGuide">
-<div class="swipeText">👉 RIGHT SWIPE KARO</div>
-<span class="hand">👆</span>
-<span class="arrow">➡️</span>
-<div class="smallHint">Aur thoda sa baaki hai ❤️</div>
+<div class="continueBox">
+<div class="timer" id="timer2">❤️ Pura padh lena... 15</div>
+<button class="continueBtn" id="btn2" onclick="nextPage(2)">
+❤️ Tap to Continue ❤️
+</button>
 </div>
 
 </section>
@@ -418,19 +401,17 @@ Love you ❤️ Love you ❤️ Love you ❤️<br>
 LOVE YOU SO MUCHHHH 😘💋❤️
 </div>
 
-<br>
-
-<div style="text-align:center;font-size:15px">
-❤️ Pura message padh liya? ❤️
+<div class="text" style="text-align:center">
+❤️ Bas itna hi nahi... abhi tumhara surprise baaki hai. ❤️
 </div>
 
 </div>
 
-<div class="swipeGuide">
-<div class="swipeText">👉 AB RIGHT SWIPE KARO</div>
-<span class="hand">👆</span>
-<span class="arrow">➡️</span>
-<div class="smallHint">Last mein tumhara surprise hai 🎁</div>
+<div class="continueBox">
+<div class="timer" id="timer3">❤️ Pura message padh lena... 15</div>
+<button class="continueBtn" id="btn3" onclick="nextPage(3)">
+❤️ Tap to Continue ❤️
+</button>
 </div>
 
 </section>
@@ -442,11 +423,11 @@ LOVE YOU SO MUCHHHH 😘💋❤️
 <div class="gift" onclick="openGift()">🎁</div>
 
 <div class="giftTitle">
-Is Gift Ko Touch Karo ❤️
+Gift ko touch karo ❤️
 </div>
 
 <div class="giftHint">
-Tumhare liye kuch special hai... 🥰
+Ab tumhare liye asli surprise hai... 🥰
 </div>
 
 </section>
@@ -457,7 +438,7 @@ Tumhare liye kuch special hai... 🥰
 <!-- FINAL -->
 <div id="final">
 
-<div class="finalTop">
+<div class="finalSmall">
 Meri taraf se tumhare liye... ❤️
 </div>
 
@@ -485,7 +466,6 @@ let number=3;
 let countdown=setInterval(function(){
 
 number--;
-
 document.getElementById("count").innerText=number;
 
 if(number===0){
@@ -497,6 +477,8 @@ setTimeout(function(){
 document.getElementById("intro").style.display="none";
 document.getElementById("story").style.display="block";
 
+startTimer(1);
+
 },700);
 
 }
@@ -504,81 +486,107 @@ document.getElementById("story").style.display="block";
 },1000);
 
 
-/* PAGE SWIPE */
-const pages=document.querySelectorAll(".page");
-let current=0;
-let startX=0;
-let startY=0;
+/* FLOATING BIRTHDAY WORDS */
 
-function nextPage(){
+const words=[
+"Happy Birthday ❤️",
+"Baby 💕",
+"Janu 🥰",
+"Sona ❤️",
+"Princess 👑",
+"Darling 💖",
+"Wifey 💍",
+"Kallo Baby ❤️",
+"Love You 💋",
+"Champe 💕"
+];
 
-if(current < pages.length-1){
+for(let i=0;i<24;i++){
 
-pages[current].classList.remove("active");
-pages[current].classList.add("old");
+let w=document.createElement("div");
 
-current++;
+w.className="floatWord";
 
-pages[current].classList.remove("old");
-pages[current].classList.add("active");
+w.innerText=words[Math.floor(Math.random()*words.length)];
+
+w.style.left=Math.random()*95+"vw";
+w.style.animationDuration=(8+Math.random()*10)+"s";
+w.style.animationDelay=(-Math.random()*12)+"s";
+
+document.getElementById("story").appendChild(w);
+
+}
+
+
+/* 15 SECOND TIMER */
+
+let timerRunning={};
+
+function startTimer(pageNo){
+
+if(timerRunning[pageNo])return;
+
+timerRunning[pageNo]=true;
+
+let seconds=15;
+
+let timer=document.getElementById("timer"+pageNo);
+let button=document.getElementById("btn"+pageNo);
+
+let interval=setInterval(function(){
+
+seconds--;
+
+timer.innerText="❤️ Thoda sa padh lo... "+seconds;
+
+if(seconds<=0){
+
+clearInterval(interval);
+
+timer.style.display="none";
+button.style.display="inline-block";
+
+}
+
+},1000);
+
+}
+
+
+/* NEXT PAGE */
+
+function nextPage(number){
+
+let pages=document.querySelectorAll(".page");
+
+pages[number-1].classList.remove("active");
+pages[number-1].classList.add("exit");
+
+pages[number].classList.add("active");
+
+if(number<3){
+
+setTimeout(function(){
+
+startTimer(number+1);
+
+},750);
 
 }
 
 }
 
-function prevPage(){
 
-if(current>0){
-
-pages[current].classList.remove("active");
-
-current--;
-
-pages[current].classList.remove("old");
-pages[current].classList.add("active");
-
-}
-
-}
-
-
-/* TOUCH */
-document.getElementById("story").addEventListener("touchstart",function(e){
-
-startX=e.touches[0].clientX;
-startY=e.touches[0].clientY;
-
-},{passive:true});
-
-
-document.getElementById("story").addEventListener("touchend",function(e){
-
-let endX=e.changedTouches[0].clientX;
-let endY=e.changedTouches[0].clientY;
-
-let diffX=endX-startX;
-let diffY=endY-startY;
-
-/* RIGHT SWIPE */
-if(diffX>70 && Math.abs(diffX)>Math.abs(diffY)){
-
-nextPage();
-
-}
-
-});
-
-
-/* FALLING BIRTHDAY MESSAGES */
+/* BIRTHDAY MESSAGES */
 
 const birthdayMessages=[
 
 "❤️ Happy Birthday Baby",
-"💕 Happy Birthday Janu",
-"🎂 Happy Birthday Sona",
-"💖 Happy Birthday Babu",
-"👑 Happy Birthday My Wife",
-"💗 Happy Birthday Princess",
+"💕 Happy Birthday Darling",
+"🎂 Happy Birthday Janu",
+"💖 Happy Birthday Sona",
+"👑 Happy Birthday Princess",
+"💍 Happy Birthday Wifey",
 "😘 Happy Birthday Cute Girl",
 "🎀 Happy Birthday Kallo Baby",
 "❤️ Happy Birthday Meri Jaan",
@@ -595,26 +603,27 @@ const birthdayMessages=[
 ];
 
 
+/* FALLING */
 function fallingMessage(){
 
-let msg=document.createElement("div");
+let m=document.createElement("div");
 
-msg.className="falling";
+m.className="falling";
 
-msg.innerText=
+m.innerText=
 birthdayMessages[
 Math.floor(Math.random()*birthdayMessages.length)
 ];
 
-msg.style.left=(Math.random()*80+5)+"vw";
+m.style.left=(Math.random()*80+5)+"vw";
 
-msg.style.animationDuration=(3.5+Math.random()*2)+"s";
+m.style.animationDuration=(3.5+Math.random()*2)+"s";
 
-document.body.appendChild(msg);
+document.body.appendChild(m);
 
 setTimeout(function(){
 
-msg.remove();
+m.remove();
 
 },6000);
 
@@ -623,9 +632,9 @@ msg.remove();
 
 /* HEART EXPLOSION */
 
-function heartExplosion(){
+function explosion(){
 
-for(let i=0;i<60;i++){
+for(let i=0;i<70;i++){
 
 setTimeout(function(){
 
@@ -640,14 +649,14 @@ s.innerHTML=
 s.style.left="50%";
 s.style.top="50%";
 
-s.style.setProperty("--x",(Math.random()*900-450)+"px");
-s.style.setProperty("--y",(Math.random()*800-400)+"px");
+s.style.setProperty("--x",(Math.random()*1000-500)+"px");
+s.style.setProperty("--y",(Math.random()*850-425)+"px");
 
 document.body.appendChild(s);
 
 setTimeout(()=>s.remove(),2100);
 
-},i*18);
+},i*15);
 
 }
 
@@ -658,33 +667,30 @@ setTimeout(()=>s.remove(),2100);
 
 function openGift(){
 
-/* falling messages */
-for(let i=0;i<45;i++){
+for(let i=0;i<55;i++){
 
 setTimeout(function(){
 
 fallingMessage();
 
-},i*70);
+},i*65);
 
 }
 
-/* hearts */
-heartExplosion();
+explosion();
 
-/* final screen */
 setTimeout(function(){
 
 document.getElementById("story").style.display="none";
 document.getElementById("final").style.display="flex";
 
-heartExplosion();
+explosion();
 
-},3200);
+},3500);
 
 }
 
 </script>
 
 </body>
-</html>
+  </html>
